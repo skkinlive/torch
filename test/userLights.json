@@ -1,12 +1,7 @@
 {
   "dnd5e": {
-    "system": "dnd5e",
-    "topology": "standard",
-    "quantity" : "quantity",
     "sources": {
       "Phantom Torch": {
-        "name": "Phantom Torch",
-        "type": "equipment",
         "consumable": true,
         "states": 2,
         "light": [
@@ -14,32 +9,20 @@
         ]
       },
       "Candle": {
-        "name": "Candle",
-        "type": "equipment",
         "consumable": true,
-        "states": 2,
-        "light": [
-          { 
-            "bright": 10, "dim": 15, "angle": 360, "color": "#ff9329", "alpha": 0.5,
-            "animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
-          }
-        ]
+        "light": { 
+          "bright": 10, "dim": 15, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+          "animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+        }
       }
     }
   },
   "test": {
-    "system": "test",
     "topology": "gurps",
-    "quantity": "quantity",
     "sources": {
       "Flashlight": {
-        "name": "Flashlight",
-        "type": "equipment",
         "consumable": true,
-        "states": 2,
-        "light": [
-          { "bright": 10, "dim": 0, "angle": 3, "color": "#ffd6aa", "alpha": 1.0 }
-        ]
+        "light": { "bright": 10, "dim": 0, "angle": 3, "color": "#ffd6aa", "alpha": 1.0 }
       }
     }
   }
