@@ -2,6 +2,122 @@ import SourceLibrary from '../library.js';
 export let torchCommonLibraryTests = (context) => {
   const {describe, it, assert, afterEach} = context;
   describe('Torch Common Library Tests', () => {
+    describe('Library defaulting tests', () => {
+      it('library defaults are all applied - no reference', () => {
+        let lib = {
+          fakeSystem: { sources: {
+              nuke: { light: {bright: 5, dim: 10, angle: 360 } },
+              other: { light: [ {bright: 10, dim: 20, angle: 360} ] }
+          } }
+        }
+        SourceLibrary.applyFieldDefaults(lib);
+        assert.equal(lib['fakeSystem'].system, 'fakeSystem');
+        assert.equal(lib['fakeSystem'].topology, 'standard');
+        assert.equal(lib['fakeSystem'].quantity, 'quantity');
+        assert.equal(lib['fakeSystem'].sources['nuke'].name, 'nuke');
+        assert.equal(lib['fakeSystem'].sources['nuke'].type, 'equipment');
+        assert.equal(lib['fakeSystem'].sources['nuke'].consumable, false);
+        assert.equal(lib['fakeSystem'].sources['nuke'].states, 2);
+        assert.equal(lib['fakeSystem'].sources['nuke'].light.length, 1);
+        assert.equal(lib['fakeSystem'].sources['nuke'].light[0].bright, 5);
+        assert.equal(lib['fakeSystem'].sources['other'].name,'other');
+        assert.equal(lib['fakeSystem'].sources['other'].type, 'equipment');
+        assert.equal(lib['fakeSystem'].sources['other'].consumable, false);
+        assert.equal(lib['fakeSystem'].sources['other'].states, 2);
+        assert.equal(lib['fakeSystem'].sources['other'].light[0].bright, 10);
+      })
+      it('library defaults are all applied - with reference', () => {
+        let lib = {
+          fakeSystem: { sources: {
+              nuke: { light: {bright: 5, dim: 10, angle: 360 } },
+              other: { light: [ {bright: 10, dim: 20, angle: 360} ] }
+          }}
+        };
+        let ref = {
+          fakeSystem: { topology: "gurps", quantity: "amount", sources: {
+            other: { type: "spell", consumable: true, "states": 2, light: [ {bright: 15, dim: 30, angle: 57}]}
+          }}
+        };
+        SourceLibrary.applyFieldDefaults(lib, ref);
+        assert.equal(lib['fakeSystem'].system, 'fakeSystem');
+        assert.equal(lib['fakeSystem'].topology, 'gurps');
+        assert.equal(lib['fakeSystem'].quantity, 'amount');
+        assert.equal(lib['fakeSystem'].sources['nuke'].name, 'nuke');
+        assert.equal(lib['fakeSystem'].sources['nuke'].type, 'equipment');
+        assert.equal(lib['fakeSystem'].sources['nuke'].consumable, false,"Consumable matches for nuke");
+        assert.equal(lib['fakeSystem'].sources['nuke'].states, 2);
+        assert.equal(lib['fakeSystem'].sources['nuke'].light.length, 1);
+        assert.equal(lib['fakeSystem'].sources['nuke'].light[0].bright, 5);
+        assert.equal(lib['fakeSystem'].sources['other'].name,'other');
+        assert.equal(lib['fakeSystem'].sources['other'].type, 'spell');
+        assert.equal(lib['fakeSystem'].sources['other'].consumable, true, "Consumable matches for other");
+        assert.equal(lib['fakeSystem'].sources['other'].states, 2);
+        assert.equal(lib['fakeSystem'].sources['other'].light[0].bright, 10);
+      })
+      it('library defaults do not override actual data - no reference', () => {
+        let lib = {
+          fakeSystem: { 
+            system: "aSystem",
+            topology: "gurps",
+            quantity: "count",
+            sources: {
+              nuke: { name: "Nuke2", type: "spell", consumable: true, states: 3, 
+                light: [{bright: 15, dim: 20, angle: 360 }, {bright: 20, dim: 40, angle: 57}] },
+              other: { name: "Other", type: "spell", consumable: false, states: 2, light: [ {bright: 10, dim: 20, angle: 360} ] }
+          } }
+        }
+        SourceLibrary.applyFieldDefaults(lib);
+        assert.equal(lib['fakeSystem'].system, 'aSystem');
+        assert.equal(lib['fakeSystem'].topology, 'gurps');
+        assert.equal(lib['fakeSystem'].quantity, 'count');
+        assert.equal(lib['fakeSystem'].sources['nuke'].name, 'Nuke2');
+        assert.equal(lib['fakeSystem'].sources['nuke'].type, 'spell');
+        assert.equal(lib['fakeSystem'].sources['nuke'].consumable, true);
+        assert.equal(lib['fakeSystem'].sources['nuke'].states, 3);
+        assert.equal(lib['fakeSystem'].sources['nuke'].light.length, 2);
+        assert.equal(lib['fakeSystem'].sources['nuke'].light[0].bright, 15);
+        assert.equal(lib['fakeSystem'].sources['other'].name,'Other');
+        assert.equal(lib['fakeSystem'].sources['other'].type, 'spell');
+        assert.equal(lib['fakeSystem'].sources['other'].consumable, false);
+        assert.equal(lib['fakeSystem'].sources['other'].states, 2);
+        assert.equal(lib['fakeSystem'].sources['other'].light[0].bright, 10);
+      })
+
+      it('library defaults do not override actual data - with reference', () => {
+        let lib = {
+          fakeSystem: { 
+            system: "aSystem",
+            topology: "gurps",
+            quantity: "count",
+            sources: {
+              nuke: { name: "Nuke2", type: "spell", consumable: true, states: 3, 
+                light: [{bright: 15, dim: 20, angle: 360 }, {bright: 20, dim: 40, angle: 57}] },
+              other: { name: "Other", type: "spell", consumable: false, states: 2, light: [ {bright: 10, dim: 20, angle: 360} ] }
+          } }
+        }
+        let ref = {
+          fakeSystem: { topology: "gurps", quantity: "amount", sources: {
+            other: { type: "spell", consumable: true, "states": 2, light: [ {bright: 15, dim: 30, angle: 57}]}
+          }}
+        };
+        SourceLibrary.applyFieldDefaults(lib, ref);
+        assert.equal(lib['fakeSystem'].system, 'aSystem');
+        assert.equal(lib['fakeSystem'].topology, 'gurps');
+        assert.equal(lib['fakeSystem'].quantity, 'count');
+        assert.equal(lib['fakeSystem'].sources['nuke'].name, 'Nuke2');
+        assert.equal(lib['fakeSystem'].sources['nuke'].type, 'spell');
+        assert.equal(lib['fakeSystem'].sources['nuke'].consumable, true);
+        assert.equal(lib['fakeSystem'].sources['nuke'].states, 3);
+        assert.equal(lib['fakeSystem'].sources['nuke'].light.length, 2);
+        assert.equal(lib['fakeSystem'].sources['nuke'].light[0].bright, 15);
+        assert.equal(lib['fakeSystem'].sources['other'].name,'Other');
+        assert.equal(lib['fakeSystem'].sources['other'].type, 'spell');
+        assert.equal(lib['fakeSystem'].sources['other'].consumable, false);
+        assert.equal(lib['fakeSystem'].sources['other'].states, 2);
+        assert.equal(lib['fakeSystem'].sources['other'].light[0].bright, 10);
+      })
+
+    });
     describe('Library Loading tests', () => {
       afterEach(async() => {
         SourceLibrary.commonLibrary = undefined;
@@ -33,7 +149,7 @@ export let torchCommonLibraryTests = (context) => {
       });
       it('library load for D&D 5e with a user library', async () => {
         assert.notOk(SourceLibrary.commonLibrary, "no common library loaded initially");
-        let library = await SourceLibrary.load('dnd5e', 10, 50, 'Torch', './userLights.json');
+        let library = await SourceLibrary.load('dnd5e', 10, 50, 'Torch', './modules/torch/test/userLights.json');
         assert.ok(SourceLibrary.commonLibrary, "common library loaded");
         let candle = library.getLightSource("candle");
         assert.equal(candle.light[0].bright, 10, "user candle bright light level");
@@ -49,7 +165,7 @@ export let torchCommonLibraryTests = (context) => {
       });
       it('library load for GURPS with a user library with a GURPS flashlight', async () => {
         assert.notOk(SourceLibrary.commonLibrary, "no common library loaded initially");
-        let library = await SourceLibrary.load('test', 50, 10, 'Torch', './userLights.json');
+        let library = await SourceLibrary.load('test', 50, 10, 'Torch', './modules/torch/test/userLights.json');
         assert.ok(SourceLibrary.commonLibrary, "common library loaded");
         let candle = library.getLightSource("candle");
         assert.notOk(candle, "No candle defined as expected");
@@ -67,7 +183,7 @@ export let torchCommonLibraryTests = (context) => {
         it('Actor inventory settings for Versatile in D&D5e with a user library', async () => {
           let versatile = game.actors.getName("Versatile");
           assert.ok(versatile, "Actor Versatile found");
-          let library = await SourceLibrary.load('dnd5e', 50, 10, 'Torch', './userLights.json');
+          let library = await SourceLibrary.load('dnd5e', 50, 10, 'Torch', './modules/torch/test/userLights.json');
           let torches = library.getInventory(versatile, "Torch");
           assert.ok(typeof torches === "number", "Count of torches has a numeric value");
           let candles = library.getInventory(versatile, "Candle");
@@ -92,7 +208,7 @@ export let torchCommonLibraryTests = (context) => {
         it('Actor image settings for Versatile in D&D5e with a user library', async () => {
           let versatile = game.actors.getName("Versatile");
           assert.ok(versatile, "Actor Versatile found");
-          let library = await SourceLibrary.load('dnd5e', 50, 10, 'Torch', './userLights.json');
+          let library = await SourceLibrary.load('dnd5e', 50, 10, 'Torch', './modules/torch/test/userLights.json');
           let torchImage = library.getImage(versatile, "Torch");
           assert.ok(torchImage, "Torch should have a defined image");
           assert.notEqual(torchImage,"", "Torch image has a reasonable value");
@@ -115,7 +231,7 @@ export let torchCommonLibraryTests = (context) => {
           assert.ok(bearer, "Actor Torchbearer found");
           let everythingBut = game.actors.getName("Bic");
           assert.ok(everythingBut, "Actor Bic found");
-          let library = await SourceLibrary.load('dnd5e', 50, 10, 'Torch', './userLights.json');
+          let library = await SourceLibrary.load('dnd5e', 50, 10, 'Torch', './modules/torch/test/userLights.json');
 
           let breakerSources = library.actorLightSources(breaker); 
           assert.equal (breakerSources.length, 2, "Breaker has two known light sources");

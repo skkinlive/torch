@@ -9,12 +9,50 @@ export default class SourceLibrary {
     this.library = library;
   }
   
+  static applyFieldDefaults(library, reference) {
+    for (const system in library) {
+      const ref = reference && reference.hasOwnProperty(system) ? reference[system] : null;
+      if (!library[system].system) {
+        library[system].system = system;
+      }
+      if (!library[system].topology) {
+        library[system].topology = ref ? ref.topology : "standard";
+      }
+      if (!library[system].quantity) {
+        library[system].quantity = ref ? ref.quantity : "quantity";
+      }
+      const sources = library[system].sources;
+      if (sources) {
+        for (const source in sources) {
+          const refsrc = ref ? ref.sources[source] : null;
+          if (!sources[source].name) {
+            sources[source].name = source;
+          }
+          if (!sources[source].type) {
+            sources[source].type = refsrc? refsrc.type : "equipment";
+          }
+          if (sources[source].consumable === undefined) {
+            sources[source].consumable = refsrc ? refsrc.consumable : false;
+          }
+          if (sources[source].light && (sources[source].light.constructor !== Array)) {
+            sources[source].light = [sources[source].light];
+          }
+          if (sources[source].light && (sources[source].light.constructor === Array) && !sources[source].states) {
+            sources[source].states = sources[source].light.length + 1;
+          }
+        }
+      }
+    }
+  }
+
   static async load(systemId, selfBright, selfDim, selfItem, userLibrary, protoLight) {
     // The common library is cached - to update it, you must reload the game.
     if (!SourceLibrary.commonLibrary) {
       SourceLibrary.commonLibrary = await fetch('/modules/torch/sources.json')
         .then( response => { return response.json(); });
-    }
+      this.applyFieldDefaults(SourceLibrary.commonLibrary);
+      }
+
     let defaultLight = Object.assign({}, protoLight);
     defaultLight.bright = selfBright;
     defaultLight.dim = selfDim;
@@ -27,7 +65,9 @@ export default class SourceLibrary {
     // The user library reloads every time you open the HUD to permit cut and try.
     let mergedLibrary = userLibrary ? await fetch(userLibrary)
       .then( response => { return response.json(); })
-      .then( userData => { return mergeLibraries (userData, SourceLibrary.commonLibrary, configuredLight); })
+      .then( userData => { 
+        this.applyFieldDefaults(userData, SourceLibrary.commonLibrary);
+        return mergeLibraries (userData, SourceLibrary.commonLibrary, configuredLight); })
       .catch(reason => {
         console.warn("Failed loading user library: ", reason);
       }) : mergeLibraries (
