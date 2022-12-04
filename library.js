@@ -21,24 +21,46 @@ export default class SourceLibrary {
       if (!library[system].quantity) {
         library[system].quantity = ref ? ref.quantity : "quantity";
       }
+      if (!library[system].sources) {
+        library[system].sources = {};
+      }
       const sources = library[system].sources;
-      if (sources) {
-        for (const source in sources) {
-          const refsrc = ref ? ref.sources[source] : null;
-          if (!sources[source].name) {
-            sources[source].name = source;
-          }
-          if (!sources[source].type) {
-            sources[source].type = refsrc? refsrc.type : "equipment";
-          }
-          if (sources[source].consumable === undefined) {
-            sources[source].consumable = refsrc ? refsrc.consumable : false;
-          }
-          if (sources[source].light && (sources[source].light.constructor !== Array)) {
-            sources[source].light = [sources[source].light];
-          }
-          if (sources[source].light && (sources[source].light.constructor === Array) && !sources[source].states) {
-            sources[source].states = sources[source].light.length + 1;
+      for (const source in sources) {
+        const refsrc = ref ? ref.sources[source] : null;
+        if (!sources[source].name) {
+          sources[source].name = source;
+        }
+        if (!sources[source].type) {
+          sources[source].type = refsrc? refsrc.type : "equipment";
+        }
+        if (sources[source].consumable === undefined) {
+          sources[source].consumable = refsrc ? refsrc.consumable : false;
+        }
+        if (sources[source].consumable === 'true') {
+          sources[source].consumable = true;
+        }
+        if (sources[source].consumable === 'false') {
+          sources[source].consumable = false;
+        }
+        if (sources[source].light && (sources[source].light.constructor !== Array)) {
+          sources[source].light = [sources[source].light];
+        }
+        if (sources[source].light && (sources[source].light.constructor === Array) && !sources[source].states) {
+          sources[source].states = sources[source].light.length + 1;
+        }
+      }
+      // Now apply any aliases found to reference the same source
+      if (library[system].aliases) {
+        if (!library[system].sources) {
+          library[system].sources = {};
+        }
+        let sources = library[system].sources;
+        let aliases = library[system].aliases;
+        for (const aliasref in aliases) {
+          let alias = aliases[aliasref];
+          let aliasedSource = sources[aliasref] ? sources[aliasref] : ref && ref.sources[aliasref] ? ref.sources[aliasref] : null;
+          if (aliasedSource) {
+            sources[alias] = Object.assign({}, aliasedSource, {name: alias});
           }
         }
       }

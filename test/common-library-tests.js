@@ -5,10 +5,16 @@ export let torchCommonLibraryTests = (context) => {
     describe('Library defaulting tests', () => {
       it('library defaults are all applied - no reference', () => {
         let lib = {
-          fakeSystem: { sources: {
+          fakeSystem: { 
+            sources: {
               nuke: { light: {bright: 5, dim: 10, angle: 360 } },
               other: { light: [ {bright: 10, dim: 20, angle: 360} ] }
-          } }
+            },
+            aliases: {
+              nuke: "bomb",
+              other: "alt"
+            } 
+          }
         }
         SourceLibrary.applyFieldDefaults(lib);
         assert.equal(lib['fakeSystem'].system, 'fakeSystem');
@@ -25,17 +31,34 @@ export let torchCommonLibraryTests = (context) => {
         assert.equal(lib['fakeSystem'].sources['other'].consumable, false);
         assert.equal(lib['fakeSystem'].sources['other'].states, 2);
         assert.equal(lib['fakeSystem'].sources['other'].light[0].bright, 10);
+        assert.equal(lib['fakeSystem'].sources['bomb'].name, 'bomb');
+        assert.equal(lib['fakeSystem'].sources['bomb'].type, 'equipment');
+        assert.equal(lib['fakeSystem'].sources['bomb'].consumable, false);
+        assert.equal(lib['fakeSystem'].sources['bomb'].states, 2);
+        assert.equal(lib['fakeSystem'].sources['bomb'].light.length, 1);
+        assert.equal(lib['fakeSystem'].sources['bomb'].light[0].bright, 5);
+        assert.equal(lib['fakeSystem'].sources['alt'].name,'alt');
+        assert.equal(lib['fakeSystem'].sources['alt'].type, 'equipment');
+        assert.equal(lib['fakeSystem'].sources['alt'].consumable, false);
+        assert.equal(lib['fakeSystem'].sources['alt'].states, 2);
+        assert.equal(lib['fakeSystem'].sources['alt'].light[0].bright, 10);
       })
       it('library defaults are all applied - with reference', () => {
         let lib = {
-          fakeSystem: { sources: {
+          fakeSystem: { 
+            sources: {
               nuke: { light: {bright: 5, dim: 10, angle: 360 } },
               other: { light: [ {bright: 10, dim: 20, angle: 360} ] }
-          }}
+            },
+            aliases: {
+              special: "crazy"
+            }
+          }
         };
         let ref = {
           fakeSystem: { topology: "gurps", quantity: "amount", sources: {
-            other: { type: "spell", consumable: true, "states": 2, light: [ {bright: 15, dim: 30, angle: 57}]}
+            other: { type: "spell", consumable: true, states: 2, light: [ {bright: 15, dim: 30, angle: 57}]},
+            special: { type: "equipment", consumable: false, states: 2, light: [ {bright: 20, dim: 35, angle: 90}]}
           }}
         };
         SourceLibrary.applyFieldDefaults(lib, ref);
@@ -53,6 +76,13 @@ export let torchCommonLibraryTests = (context) => {
         assert.equal(lib['fakeSystem'].sources['other'].consumable, true, "Consumable matches for other");
         assert.equal(lib['fakeSystem'].sources['other'].states, 2);
         assert.equal(lib['fakeSystem'].sources['other'].light[0].bright, 10);
+        assert.equal(lib['fakeSystem'].sources['crazy'].name,'crazy');
+        assert.equal(lib['fakeSystem'].sources['crazy'].type, 'equipment');
+        assert.equal(lib['fakeSystem'].sources['crazy'].consumable, false, "Consumable matches for other");
+        assert.equal(lib['fakeSystem'].sources['crazy'].states, 2);
+        assert.equal(lib['fakeSystem'].sources['crazy'].light[0].bright, 20);
+        assert.equal(lib['fakeSystem'].sources['special'], undefined);
+
       })
       it('library defaults do not override actual data - no reference', () => {
         let lib = {
@@ -90,9 +120,9 @@ export let torchCommonLibraryTests = (context) => {
             topology: "gurps",
             quantity: "count",
             sources: {
-              nuke: { name: "Nuke2", type: "spell", consumable: true, states: 3, 
+              nuke: { name: "Nuke2", type: "spell", consumable: "true", states: 3, 
                 light: [{bright: 15, dim: 20, angle: 360 }, {bright: 20, dim: 40, angle: 57}] },
-              other: { name: "Other", type: "spell", consumable: false, states: 2, light: [ {bright: 10, dim: 20, angle: 360} ] }
+              other: { name: "Other", type: "spell", consumable: "false", states: 2, light: [ {bright: 10, dim: 20, angle: 360} ] }
           } }
         }
         let ref = {
