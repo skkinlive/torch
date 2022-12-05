@@ -97,7 +97,7 @@ game.actors.getName("Ebenezer").items.getName("Candle")
 ```
 The system ID shown is the key name you should use for your system. The second value either gives you an object you can examine for the item or it gives you an error. If this returns a value, your topology is almost certainly standard.
 
-![](./Design/finding-quantity.png)
+![Console Output for Above Commands](./design/finding-quantity.png)
 
 In the item, expand the "system" property, and look for a sub-property whose name has something to do with quantity. If it has the same value you supplied, that clinches it. That's your quantity field. This is usually a simple value like "quantity", "count", or "amount", but it may be nested in a structue, like Star Wars FFG's "quantity.value". That's the value to use for your system's "quantity" property in the JSON.
 
