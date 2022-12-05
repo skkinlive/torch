@@ -3,6 +3,10 @@
     "system": "dnd5e",
     "topology": "standard",
     "quantity" : "quantity",
+    "aliases": {
+      "Hooded Lantern": "Lantern, Hooded",
+      "Bullseye Lantern": "Lantern, Bullseye"
+    },
     "sources": {
       "Candle": {
         "name": "Candle",

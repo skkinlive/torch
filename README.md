@@ -62,8 +62,8 @@ The JSON has one top-level property per system, keyed by the Foundry id of the s
   * For `gurps`, it is the path to the field in a nested structure under the actor. It should be set to `amount`.
   * Some systems may not count inventory. For these, omit it, and use the default.
 
-* The `sources` property has a sub-property for each light source you are creating or superseding. 
-  * The sub-property's key is the name of the light source.
+* The `sources` property has a sub-property for each light source you are creating or superseding. For each source:
+  * The key is the name of the light source.
   * The `name` value, if specified, should always be identical to the key. It can (and probably should) be omitted.
   * The `type` value may be `equipment` or `spell`. If omitted, it defaults to `equipment`. 
   * The `consumable` value should be `true` or `false`. 
@@ -71,7 +71,7 @@ The JSON has one top-level property per system, keyed by the Foundry id of the s
     * If `false`, the quantity in the inventory is ignored, but you still need the light source in your inventory to use it.
     * If not specified, it defaults to `false`. 
     * If your system doesn't count inventory, make sure all of your light sources either don't specify this field or set it to `false`.
-    * If you find tracking inventory a complete distraction from your game, you can turn this feature off using the "GM Uses Inventory" and "Player Uses Inventory" settings.
+    * If you find "counting your candles" a complete distraction from your game, you can turn this feature off using the "GM Uses Inventory" and "Player Uses Inventory" settings.
   * The `states` specifies how many states the light source toggles through. This allows for sources like hooded lanterns to toggle "high - low - off" if desired. It can be omitted and the number of states will be one more than the number of objects you supply to the `light` array. 
   * The `light` value is an array of objects that specify the light properties for each "on" light state. It has no default.
     * Values for the "off" state are taken from the settings for the actor's prototype token.
