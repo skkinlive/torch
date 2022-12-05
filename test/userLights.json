@@ -3,7 +3,6 @@
     "sources": {
       "Phantom Torch": {
         "consumable": true,
-        "states": 2,
         "light": [
           { "bright": 5, "dim": 20, "angle": 360, "color": "#ff9329", "alpha": 0.6 }
         ]
@@ -21,7 +20,6 @@
     "topology": "gurps",
     "sources": {
       "Flashlight": {
-        "consumable": true,
         "light": { "bright": 10, "dim": 0, "angle": 3, "color": "#ffd6aa", "alpha": 1.0 }
       }
     }
