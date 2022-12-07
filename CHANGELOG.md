@@ -2,7 +2,7 @@
 
 ## Middle Kingdom - v10 branch
 
-### Unreleased - December 6, 2022
+### 2.2.0 - December 6, 2022
 - [FEATURE] (Lupestro) Updated README for clarity in creating user settings. (Issue #27 - many participants)
 - [FEATURE] (Lupestro) Improved and simplified source JSON syntax with defaults for most fields. (Issue #27 - many participants)
   * This change shouldn't invalidate any existing light source JSON files.
