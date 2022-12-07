@@ -56,8 +56,8 @@ export default class SourceLibrary {
         }
         let sources = library[system].sources;
         let aliases = library[system].aliases;
-        for (const aliasref in aliases) {
-          let alias = aliases[aliasref];
+        for (const alias in aliases) {
+          let aliasref = aliases[alias];
           let aliasedSource = sources[aliasref] ? sources[aliasref] : ref && ref.sources[aliasref] ? ref.sources[aliasref] : null;
           if (aliasedSource) {
             sources[alias] = Object.assign({}, aliasedSource, {name: alias});

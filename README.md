@@ -22,7 +22,7 @@ This module just sheds light from the location of a player token upon demand bas
 Because the light source to use is now user-configurable, we no longer select a light source for you based on fallbacks. As it stands, if you do not explicitly select your light source, it will pick any among the light sources you have equipped, in no particular order. 
 ## Customizing light sources
 
-You can supersede these settings or supply settings for your own light sources for any system with a JSON file, which you can deliver through the "Additional Light Sources" setting. The following shows a fully specified light source:
+You can supersede these settings or supply settings for your own light sources for any system with a JSON file, which you can deliver through the "Additional Light Sources" setting. The following shows a fully specified light source and a couple of aliases:
 ```json
 {
   "dnd5e": {
@@ -30,8 +30,8 @@ You can supersede these settings or supply settings for your own light sources f
     "topology": "standard",
     "quantity" : "quantity",
     "aliases": {
-      "Bullseye Lantern": "Lantern (Bullseye)",
-      "Hooded Lantern": "Lantern (Hooded)"
+      "Lantern (Bullseye)": "Bullseye Lantern",
+      "Lantern (Hooded)": "Hooded Lantern"
     }
     "sources": {
       "Candle": {
@@ -78,8 +78,8 @@ The JSON has one top-level property per system, keyed by the Foundry id of the s
     * If you supply a single object rather than an array of objects, the module will treat it as an array of one item,  (a light source with a single "on" state, the most common condition), and `states` will default to 2.
 
 * The `aliases` property lets you specify alternate names for existing sources. Each entry has a key and a value:
-  * The key is the name of the existing source that the alias will duplicate.
-  * The value is the name of the new source as a string.
+  * The key is the new name of the source .
+  * The value is the name (as a string) of the existing source being duplicated.
   * The source you duplicate with a new name can either be one of the predefined sources or one of the sources from the same user settings.
 
 ### Determining your system's id, topology, and quantity

@@ -2,9 +2,20 @@
 
 ## Middle Kingdom - v10 branch
 
+### Unreleased - December 6, 2022
+- [FEATURE] (Lupestro) Updated README for clarity in creating user settings. (Issue #27 - many participants)
+- [FEATURE] (Lupestro) Improved and simplified source JSON syntax with defaults for most fields. (Issue #27 - many participants)
+  * This change shouldn't invalidate any existing light source JSON files.
+- [FEATURE] (Lupestro) Introduced aliases to JSON to give new names to light sources defined elsewhere.
+  * Using this in a very simple custom JSON will make this module more useful to those who play in a non-English language.
+- [FEATURE] (Lupestro) Provided aliases for dnd5e light sources that should provide smoother integration with ddb-importer. (Issues raised by MrPrimate and emmoth)
+- [FEATURE] (Lupestro) Improved name and description of options for consuming torches, candles, etc. to avoid confusion. (In response to comments by vgeirnaert)
+
+I'm looking at loading localized language JSON files for the out-of-the-box sources on startup in a future release. This will need the actual (i.e. matching letter-by-letter) light source names used in various games when played in different languages. Contact me if you play with light sources in another language and you're interested in helping out.
+
 ### 2.1.4 - December 4, 2022
-  - [BUGFIX] DnD5e Bullseye Lantern had wrong dim/bright ranges due to copy/paste error.
-  - [BUGFIX] Bullseye lanterns in all systems that had 53 degree radius, now have 57 degree radius.
+  - [BUGFIX] (Lupestro) DnD5e Bullseye Lantern had wrong dim/bright ranges due to copy/paste error. (Issue reported by Fragmenri. Thanks!)
+  - [BUGFIX] (Lupestro) Bullseye lanterns in all systems that had 53 degree radius, now have 57 degree radius.
      * 53 degrees is technically correct for a cone (n units wide at center distance n, per rules).
      * 57 degrees (1 radian) would be correct for a (spherical) sector of radius n and arc length n.
      * Foundry projects light radially, so you get a spherical sector, regardless of the game rules.
@@ -13,13 +24,13 @@
      * You can always reduce it back to 53 degrees with a custom JSON, of course, if you feel strongly about it.
 
 ### 2.1.3 - October 8, 2022
-  - [BUGFIX] Corrected issue (found by vkdolea) where user-supplied sources for new systems weren't processing properly.
-  - [BUGFIX] Now pulling non-dim/bright light properties for the light source configured in settings from the prototype token.
-  - [BUGFIX] Fixed the translation files for several languages.
+  - [BUGFIX] (Lupestro) Corrected issue (found by vkdolea) where user-supplied sources for new systems weren't processing properly.
+  - [BUGFIX] (Lupestro) Now pulling non-dim/bright light properties for the light source configured in settings from the prototype token. (Issue reported by Jensenator360)
+  - [BUGFIX] (Lupestro) Fixed the translation files for several languages.
 
 ### 2.1.2 - September 14, 2022
-  - [BUGFIX] Fixed image used for dancing lights
-  - [BUGFIX] Reset precedence order to user-supplied light sources first, then the source in config settings, then module-provided defaults based on game rules.
+  - [BUGFIX] (Lupestro) Fixed image used for dancing lights
+  - [BUGFIX] (Lupestro) Reset precedence order to user-supplied light sources first, then the source in config settings, then module-provided defaults based on game rules.
 
 ### 2.1.1 - September 6, 2022
   - [BUGFIX] (Lupestro) Fixed issue where unlinked tokens were adjusting inventory on source token.

@@ -4,8 +4,8 @@
     "topology": "standard",
     "quantity" : "quantity",
     "aliases": {
-      "Hooded Lantern": "Lantern, Hooded",
-      "Bullseye Lantern": "Lantern, Bullseye"
+      "Lantern, Hooded": "Hooded Lantern",
+      "Lantern, Bullseye": "Bullseye Lantern"
     },
     "sources": {
       "Candle": {

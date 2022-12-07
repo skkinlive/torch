@@ -11,8 +11,8 @@ export let torchCommonLibraryTests = (context) => {
               other: { light: [ {bright: 10, dim: 20, angle: 360} ] }
             },
             aliases: {
-              nuke: "bomb",
-              other: "alt"
+              bomb: "nuke",
+              alt: "other"
             } 
           }
         }
@@ -51,7 +51,7 @@ export let torchCommonLibraryTests = (context) => {
               other: { light: [ {bright: 10, dim: 20, angle: 360} ] }
             },
             aliases: {
-              special: "crazy"
+              crazy: "special"
             }
           }
         };
