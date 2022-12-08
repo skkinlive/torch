@@ -1,0 +1,28 @@
+{
+    "alienrpg": {
+      "topology": "standard",
+      "sources": {
+        "Hi-beam Flashlight": {
+          "consumable": false,
+          "light": [
+            { "bright": 10, "dim": 15, "angle": 90, "color": "#ff9329", "alpha": 0.5,
+            "animation": { "type": "torch", "speed": 2, "intensity": 5, "reverse": false }
+        }]
+        },
+        "TNR High Beam Shoulder Lamp": {
+          "consumable": false,
+          "light": [
+            { "bright": 10, "dim": 15, "angle": 90, "color": "#ff9329", "alpha": 0.5,
+            "animation": { "type": "torch", "speed": 2, "intensity": 5, "reverse": false }
+        }]
+        },
+        "Land Vehicle Lights": {
+          "consumable": false,
+          "light": [
+            { "bright": 15, "dim": 20, "angle": 90, "color": "#ff9329", "alpha": 0.5,
+            "animation": { "type": "torch", "speed": 2, "intensity": 5, "reverse": false }
+        }]
+        }
+      }
+    }
+  }

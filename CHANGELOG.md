@@ -2,6 +2,9 @@
 
 ## Middle Kingdom - v10 branch
 
+### 2.2.1 - December 8, 2022
+- [BUGFIX] Fixed URLs in manifest to point to /main/ not /v10/. (Thanks ckdragons for heads-up.)
+
 ### 2.2.0 - December 6, 2022
 - [FEATURE] (Lupestro) Updated README for clarity in creating user settings. (Issue #27 - many participants)
 - [FEATURE] (Lupestro) Improved and simplified source JSON syntax with defaults for most fields. (Issue #27 - many participants)
