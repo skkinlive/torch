@@ -70,7 +70,7 @@ export default class SourceLibrary {
   static async load(systemId, selfBright, selfDim, selfItem, userLibrary, protoLight) {
     // The common library is cached - to update it, you must reload the game.
     if (!SourceLibrary.commonLibrary) {
-      SourceLibrary.commonLibrary = await fetch('/modules/torch/sources.json')
+      SourceLibrary.commonLibrary = await fetch('modules/torch/sources.json')
         .then( response => { return response.json(); });
       this.applyFieldDefaults(SourceLibrary.commonLibrary);
       }
