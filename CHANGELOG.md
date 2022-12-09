@@ -2,6 +2,9 @@
 
 ## Middle Kingdom - v10 branch
 
+### 2.2.2 - December 9, 2022
+- [BUGFIX] Didn't load light sources properly if Foundry was not at root of site. (Thanks MrPrimate for the PR!)
+
 ### 2.2.1 - December 8, 2022
 - [BUGFIX] Fixed URLs in manifest to point to /main/ not /v10/. (Thanks ckdragons for heads-up.)
 
