@@ -2,6 +2,9 @@
 
 ## Middle Kingdom - v10 branch
 
+### 2.3.0 - December 10, 2022
+- [FEATURE] Now supporting Dungeon Crawl Classics. Many thanks to marcusadmortati for supplying the data and testing. 
+
 ### 2.2.2 - December 9, 2022
 - [BUGFIX] Didn't load light sources properly if Foundry was not at root of site. (Thanks MrPrimate for the PR!)
 

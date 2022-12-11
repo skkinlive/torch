@@ -1,0 +1,36 @@
+{
+  "dcc": {
+    "system": "dcc",
+    "topology": "standard",
+    "quantity" : "quantity",
+    "aliases": {
+      "Lantern": "Oil"
+    },
+    "sources": {
+      "Torch, each": {
+        "name": "Torch, each",
+        "type": "equipment",
+        "consumable": true,
+        "states": 2,
+        "light": [
+          { 
+            "bright": 15, "dim": 30, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+            "animation": { "type": "torch", "speed": 5, "intensity": 2, "reverse": false } 
+          }
+        ]
+      },
+      "Oil": {
+        "name": "Oil",
+        "type": "equipment",
+        "consumable": true,
+        "states": 2,
+        "light": [
+          { 
+            "bright": 15, "dim": 30, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+            "animation": { "type": "torch", "speed": 5, "intensity": 2, "reverse": false } 	            
+          }
+        ]
+      }
+    }
+  }
+}
