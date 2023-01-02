@@ -1,6 +1,6 @@
 # Change Log
 
-## Middle Kingdom - v10 branch
+## Middle Kingdom - v10 -> main branch
 
 ### 2.4.0 - January 2, 2023
 - [FEATURE] (Aymeeric) Updated French translation (now at 100%)
@@ -76,7 +76,7 @@ I'm looking at loading localized language JSON files for the out-of-the-box sour
       * This will make planned future work much easier as well.
       * The mere thimbleful of HTML needed is fine sitting in the top of the hud.js for now.
 
-## Intermediate period - master branch
+## Intermediate period - master -> v9 branch
 
 ### 1.4.4 - March 19, 2022
   - [BUGFIX] (Lupestro) Dancing Lights now work better for players - sends entire create / remove cycle to GM when users lack permissions on tokens.
