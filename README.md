@@ -122,15 +122,15 @@ The following is the current status of translation. Some features have arrived, 
 
 | Language | Completion | Contributors |
 | -------- | ---------- | ------------ |
-| en    | `[##################]` 18/18 (100%) | deuce, lupestro |
-| zh-cn | `[##########--------]` 10/18 (56%)  | xticime |
-| es    | `[############------]` 12/18 (67%)  | lozalojo |
-| fr    | `[##########--------]` 10/18 (56%)  | Aymeeric |
-| pt-br | `[############------]` 12/18 (67%)  | rinnocenti |
-| zh-tw | `[############------]` 12/18 (67%)  | zeteticl |
 | de    | `[##################]` 18/18 (100%) | ToGreedy |
+| en    | `[##################]` 18/18 (100%) | deuce, lupestro |
+| es    | `[############------]` 12/18 (67%)  | lozalojo |
+| fr    | `[##################]` 18/18 (100%) | Aymeeric |
+| pt-br | `[############------]` 12/18 (67%)  | rinnocenti |
+| zh-cn | `[##########--------]` 10/18 (56%)  | xticime |
+| zh-tw | `[############------]` 12/18 (67%)  | zeteticl |
 
-PRs for further translations will be dealt with promptly. While German, Japanese, and Korean are most especially desired - our translation story seems deeply incomplete without them - all others are welcome. 
+PRs for further translations will be dealt with promptly. While Japanese, and Korean are most especially desired - our translation story seems deeply incomplete without them - all others are welcome. 
 
 It's only 18 strings so far, a satisfying afternoon, even for someone who's never committed to an open source project before, and your name will go into the readme right here next to the language. Fork, clone, update, _test locally_, commit, and then submit a PR. Holler for @lupestro on Discord if you need help getting started.
 

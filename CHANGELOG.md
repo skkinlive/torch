@@ -2,14 +2,17 @@
 
 ## Middle Kingdom - v10 branch
 
+### 2.4.0 - January 2, 2023
+- [FEATURE] (Aymeeric) Updated French translation (now at 100%)
+
 ### 2.3.0 - December 10, 2022
-- [FEATURE] Now supporting Dungeon Crawl Classics. Many thanks to marcusadmortati for supplying the data and testing. 
+- [FEATURE] (Lupestro) Now supporting Dungeon Crawl Classics. Many thanks to marcusadmortati for supplying the data and testing. 
 
 ### 2.2.2 - December 9, 2022
-- [BUGFIX] Didn't load light sources properly if Foundry was not at root of site. (Thanks MrPrimate for the PR!)
+- [BUGFIX] (MrPrimate) Didn't load light sources properly if Foundry was not at root of site. (Thanks MrPrimate for the PR!)
 
 ### 2.2.1 - December 8, 2022
-- [BUGFIX] Fixed URLs in manifest to point to /main/ not /v10/. (Thanks ckdragons for heads-up.)
+- [BUGFIX] (Lupestro) Fixed URLs in manifest to point to /main/ not /v10/. (Thanks ckdragons for heads-up.)
 
 ### 2.2.0 - December 6, 2022
 - [FEATURE] (Lupestro) Updated README for clarity in creating user settings. (Issue #27 - many participants)
