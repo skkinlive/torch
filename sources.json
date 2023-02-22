@@ -433,6 +433,50 @@
       }
     }
   },
+  "ose": {
+    "topology": "standard",
+    "quantity": "quantity.value",
+    "sources": {
+      "Torch": {
+        "type": "item",
+        "consumable": true,
+        "light": [
+          {
+            "bright": 20,
+            "dim": 30,
+            "angle": 360,
+            "color": "#ff9329",
+            "alpha": 0.5,
+            "animation": {
+              "type": "torch",
+              "speed": 5,
+              "intensity": 5,
+              "reverse": false
+            }
+          }
+        ]
+      }, 
+      "Lantern": {
+        "type": "item",
+        "consumable": false,
+        "light": [
+          {
+            "bright": 20,
+            "dim": 30,
+            "angle": 360,
+            "color": "#ff9329",
+            "alpha": 0.5,
+            "animation": {
+              "type": "torch",
+              "speed": 5,
+              "intensity": 5,
+              "reverse": false
+            }
+          }
+        ]
+      }
+    }
+  },
   "default": {
     "system": "default",
     "topology": "none",
