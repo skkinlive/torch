@@ -22,9 +22,9 @@ class StandardLightTopology {
     _getQuantity(item) {
       let val = item.system;
       for (const segment of this.quantityField.split(".")) {
-        val = val[path[i]];
+        val = val[segment];
       }
-      return obj;
+      return val;
     }
     _findMatchingItem(actor, lightSourceName) {
       return Array.from(actor.items).find(
