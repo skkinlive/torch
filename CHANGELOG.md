@@ -2,6 +2,9 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.5.0 - February 18, 2023
+- [FEATURE] (Unomagan) Added light sources for Starfinder
+
 ### 2.4.0 - January 2, 2023
 - [FEATURE] (Aymeeric) Updated French translation (now at 100%)
 
