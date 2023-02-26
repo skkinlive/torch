@@ -14,9 +14,11 @@ Out of the box, the following are available:
 | swade | Candle, Flashlight, Lantern, Torch
 | pf1 | Candle, Lamp, Lantern, Bullseye Lantern, Hooded Lantern, Miner's Lantern, Torch
 | pf2e | Candle, Lantern (Hooded), Lantern (Bull's Eye), Torch
+| sfrpg | "Comm Unit, Personal", "Portable Light, Beacon", "Portable Light, Flashlight", "Portable Light, Lantern", "Portable Light, Spotlight", 
 | earthdawn4e | Candle, Lantern (Hooded), Lantern (Bullseye), Torch
-| gurps | "Candle, Tallow", "Flashlight, Heavy", "Mini Flashlight", "Micro Flashlight", "Survival Flashlight", "Lantern", "Torch", "Bull's-Eye Lantern", "Electric Lantern, Small", "Electric Lantern, Large", "Small Tactical Light", "Large Tactical Light", "Floodlight"
-| dcc | "Lantern", "Torch, each"
+| gurps | "Candle, Tallow", "Flashlight, Heavy", Mini Flashlight, Micro Flashlight, Survival Flashlight, Lantern, Torch, Bull's-Eye Lantern, "Electric Lantern, Small", "Electric Lantern, Large", Small Tactical Light, Large Tactical Light, Floodlight
+| dcc | Lantern, "Torch, each",
+| ose | Torch, Lantern
 
 This module just sheds light from the location of a player token upon demand based upon equipment inventory. It is recommended *not* to use this module for spells or equipment that have other capabilities you intend to use, like performing damage or setting down the equipment, but to rely upon other common approaches, like active effects or item piles, for those.
 

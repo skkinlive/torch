@@ -19,6 +19,7 @@ class StandardLightTopology {
     constructor(quantityField) {
       this.quantityField = quantityField ?? "quantity";
     }
+    
     _getQuantity(item) {
       let val = item.system;
       for (const segment of this.quantityField.split(".")) {
@@ -26,6 +27,7 @@ class StandardLightTopology {
       }
       return val;
     }
+
     _findMatchingItem(actor, lightSourceName) {
       return Array.from(actor.items).find(
         (item) => item.name.toLowerCase() === lightSourceName.toLowerCase()
@@ -58,6 +60,7 @@ class StandardLightTopology {
         return Promise.resolve();
       }
     }
+
     async setInventory (actor, lightSource, count) {
       if (!lightSource.consumable) return Promise.resolve();
       let item = this._findMatchingItem(actor, lightSource.name);

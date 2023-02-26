@@ -22,7 +22,8 @@ export default class TorchSocket {
    * See if this light source supports a socket request for this action
    */
   static requestSupported(action, lightSource) {
-    return TorchRequest.supports(`${action}:${lightSource}`);
+    
+    return TorchRequest.supports(`${action}:${game.system.id}:${lightSource}`);
   }
 
   /*
@@ -31,7 +32,7 @@ export default class TorchSocket {
    */
   static async sendRequest(tokenId, action, lightSource, lightSettings) {
     let req = {
-      requestType: `${action}:${lightSource}`,
+      requestType: `${action}:${game.system.id}:${lightSource}`,
       sceneId: canvas.scene.id,
       tokenId: tokenId,
       lightSettings: lightSettings

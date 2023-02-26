@@ -4,14 +4,14 @@
 const NEEDED_PERMISSIONS = {
   // Don't want to do yourself something you can't undo without a GM -
   // so check for delete on create
-  "create:Dancing Lights": ["TOKEN_CREATE", "TOKEN_DELETE"],
-  "delete:Dancing Lights": ["TOKEN_DELETE"],
+  "create:dnd5e:Dancing Lights": ["TOKEN_CREATE", "TOKEN_DELETE"],
+  "delete:dnd5e:Dancing Lights": ["TOKEN_DELETE"],
 };
 
 export default class TorchRequest {
 	static ACTIONS = {
-		"create:Dancing Lights": TorchRequest.createDancingLights,
-		"delete:Dancing Lights": TorchRequest.removeDancingLights,
+		"create:dnd5e:Dancing Lights": TorchRequest.createDancingLights,
+		"delete:dnd5e:Dancing Lights": TorchRequest.removeDancingLights,
 	};
 	static isPermitted(user, requestType) {
     if (requestType in NEEDED_PERMISSIONS) {
