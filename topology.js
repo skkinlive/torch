@@ -19,6 +19,13 @@ class StandardLightTopology {
     constructor(quantityField) {
       this.quantityField = quantityField ?? "quantity";
     }
+    _getQuantity(item) {
+      let val = item.system;
+      for (const segment of this.quantityField.split(".")) {
+        val = val[segment];
+      }
+      return val;
+    }
     _findMatchingItem(actor, lightSourceName) {
       return Array.from(actor.items).find(
         (item) => item.name.toLowerCase() === lightSourceName.toLowerCase()
@@ -37,15 +44,15 @@ class StandardLightTopology {
     getInventory (actor, lightSource) {
       if (!lightSource.consumable) return;
       let item = this._findMatchingItem(actor, lightSource.name);
-      return item ? item.system[this.quantityField] : undefined;
+      return item ? this._getQuantity(item) : undefined;
     }
   
     async decrementInventory (actor, lightSource) {
       if (!lightSource.consumable) return Promise.resolve();
       let item = this._findMatchingItem(actor, lightSource.name);
-      if (item && item.system[this.quantityField] > 0) {
+      if (item && this._getQuantity(item) > 0) {
         let fieldsToUpdate = {};
-        fieldsToUpdate["system." + this.quantityField] = item.system[this.quantityField] - 1;
+        fieldsToUpdate["system." + this.quantityField] = this._getQuantity(item) - 1;
         return item.update(fieldsToUpdate);
       } else {
         return Promise.resolve();
