@@ -2,7 +2,7 @@
   "id": "torch",
   "title": "Torch",
   "description": "Torch HUD Controls",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "authors": [
     {
       "name": "Deuce",
@@ -69,7 +69,7 @@
   "url": "https://github.com/League-of-Foundry-Developers/torch",
   "compatibility": {
     "minimum": "10",
-    "verified": "10.291",
-    "maximum": "10"
+    "verified": "11.299",
+    "maximum": "11"
   }
 }
