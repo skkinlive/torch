@@ -228,6 +228,16 @@
         "light": [
           {"bright": 20, "dim": 40, "angle": 360}
         ]
+      },
+      "Everburning Torch": {
+        "name": "Everburning Torch",
+        "type": "equipment",
+        "consumable": false,
+        "states": 2,
+        "light": [
+          { "bright": 20, "dim": 40, "color":"#57cdff", "saturation":0.3, "contrast":0.3, "shadows":0.2, "angle": 360,
+			      "animation": { "type": "torch", "speed": 1, "intensity": 7, "reverse": false }}
+        ]
       }
     }
   },
