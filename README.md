@@ -116,6 +116,35 @@ Even without adding a topology, you can still use Torch with any new system - by
 
 The easiest way I've found to do this is to set an actor's prototype token to use the types you're interested in and then export the actor from the sidebar. When you examine the file it creates, you should be able to see what it called that property on the prototype token's "light" value. That will tell you what string to use for its value in the Torch user settings to get the desired effect.
 
+## API for macro authors
+
+As of 2.8, macro authors can access the following functions of the module through `game.Torch`. All functions are async.
+
+### `game.Torch.toggle(sceneId, tokenId)`
+Walks the current light source of the specified token to its next state, returning the name of the state (typically 'on' or 'off' for simple two-state sources).
+
+### `game.Torch.extinguish(sceneId, tokenId)`
+Advances the current light source of the specified token to its 'off' state.
+
+### `game.Torch.currentSource(sceneId, tokenId)`
+Returns the name of the current light source for the specified token, if any.
+
+### `game.Torch.currentState(sceneId, tokenId)`
+Returns the current state of the current light source for the specified token.
+
+### `game.Torch.equippedSources(sceneId, tokenId)`
+Returns an array of the names of the light sources equipped by the specified token.
+
+### `game.Torch.selectSource(sceneId, tokenId, source)`
+Selects an equipped light source to be the current light source of the token.
+
+### `game.Torch.inventory(sceneId, tokenId, source)`
+Returns the remaining quantity of the specified light source for the specified token.
+
+
+### `game.Torch.sourceExhausted(sceneId, tokenId, source)`
+Returns true if the specified light source is consumable, and the instance held by the specified token has no more inventory.
+
 ## Changelog - now in [separate file](./CHANGELOG.md)
 
 ## Translation Status
@@ -124,17 +153,17 @@ The following is the current status of translation. Some features have arrived, 
 
 | Language | Completion | Contributors |
 | -------- | ---------- | ------------ |
-| de    | `[##################]` 18/18 (100%) | ToGreedy |
-| en    | `[##################]` 18/18 (100%) | deuce, lupestro |
-| es    | `[############------]` 12/18 (67%)  | lozalojo |
-| fr    | `[##################]` 18/18 (100%) | Aymeeric |
-| pt-br | `[############------]` 12/18 (67%)  | rinnocenti |
-| zh-cn | `[##########--------]` 10/18 (56%)  | xticime |
-| zh-tw | `[############------]` 12/18 (67%)  | zeteticl |
+| de    | `[##################----]` 18/22 (82%) | ToGreedy |
+| en    | `[######################]` 22/22 (100%) | deuce, lupestro |
+| es    | `[############----------]` 12/22 (55%) | lozanoje |
+| fr    | `[##################----]` 18/22 (82%) | Aymeeric |
+| pt-br | `[############----------]` 12/22 (55%) | rinnocenti |
+| zh-cn | `[##########------------]` 10/22 (56%) | xticime |
+| zh-tw | `[############----------]` 12/22 (45%) | zeteticl |
 
 PRs for further translations will be dealt with promptly. While Japanese, and Korean are most especially desired - our translation story seems deeply incomplete without them - all others are welcome. 
 
-It's only 18 strings so far, a satisfying afternoon, even for someone who's never committed to an open source project before, and your name will go into the readme right here next to the language. Fork, clone, update, _test locally_, commit, and then submit a PR. Holler for @lupestro on Discord if you need help getting started.
+Even now, it's only 22 strings, a satisfying afternoon, even for someone who's never committed to an open source project before, and your name will go into the readme right here next to the language. Fork, clone, update, _test locally_, commit, and then submit a PR. Holler for `@lupestro` on Discord if you need help getting started.
 
 ## History
 

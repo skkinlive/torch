@@ -1,4 +1,5 @@
 const BUTTON_HTML = `<div class="control-icon torch"><i class="fas fa-fire"></i></div>`;
+const QUERY_BUTTON_HTML = `<div class="control-icon torch"><i class="fas fa-question"></i></div>`;
 const DISABLED_ICON_HTML = `<i class="fas fa-slash"></i>`;
 const SOURCE_MENU = `<div class="control-icon light-source-menu"></div>`;
 const SOURCE_MENU_ITEM = (img, tooltip) => {
@@ -8,6 +9,31 @@ const SOURCE_MENU_ITEM = (img, tooltip) => {
 };
 
 export default class TokenHUD {
+  /*
+   * Add a button to instruct users how to use the module
+   */
+  static async addQueryButton(
+    token,
+    hudHtml
+  ) {
+    let tbutton = $(QUERY_BUTTON_HTML);
+    hudHtml.find(".col.left").prepend(tbutton);
+    tbutton.find("i").click(async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      new Dialog({
+        title: game.i18n.localize("torch.help.setupSources.title"),
+        content: game.i18n.localize("torch.help.setupSources.body"),
+        buttons: {
+          close: {
+          icon: '<i class="fas fa-check"></i>',
+          label: "Close"
+          }
+        },
+        default: "close"
+        }).render(true);
+    });
+  }
   /*
    * Add a torch button to the Token HUD - called from TokenHUD render hook
    */
@@ -21,7 +47,6 @@ export default class TokenHUD {
   ) {
     let state = token.lightSourceState;
     let disabled = token.lightSourceIsExhausted(token.currentLightSource);
-    let allowEvent = !disabled;
     let tbutton = $(BUTTON_HTML);
     if (state === token.STATE_ON) {
       tbutton.addClass("active");
@@ -42,11 +67,23 @@ export default class TokenHUD {
         TokenHUD.toggleSourceMenu(tbutton, token, changeLightSource);
       }
     });
-    if (allowEvent) {
-      tbutton.find("i").click(async (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        if (!tbutton.next().hasClass("light-source-menu")) {
+    tbutton.find("i").click(async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      if (!tbutton.next().hasClass("light-source-menu")) {
+        if (token.lightSourceIsExhausted(token.currentLightSource)) {
+          new Dialog({
+            title: game.i18n.localize("torch.help.supplyExhausted.title"),
+            content: game.i18n.localize("torch.help.supplyExhausted.body"),
+            buttons: {
+             close: {
+              icon: '<i class="fas fa-check"></i>',
+              label: "Close"
+             }
+            },
+            default: "close"
+           }).render(true);
+        } else {
           if (event.shiftKey) {
             togglelightHeld(token);
           } else if (event.altKey) {
@@ -55,10 +92,10 @@ export default class TokenHUD {
           } else {
             await toggleLightSource(token);
             TokenHUD.syncFlameButtonState(tbutton, token);
-          }
+          }  
         }
-      });
-    }
+      }
+    });
   }
 
   static toggleSourceMenu(button, token, changeLightSource) {

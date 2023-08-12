@@ -519,7 +519,7 @@
     "topology": "standard",
     "quantity": "quantity.value",
     "sources": {
-      "Torch": {
+      "Torches": {
         "type": "item",
         "consumable": true,
         "light": [
@@ -559,6 +559,207 @@
       }
     }
   },
+  "reclaim-the-wild": {
+		"system": "reclaim-the-wild",
+		"topology": "standard",
+		"quantity" : "quantity",
+		"aliases": {	
+		},
+		"sources": {
+			"Candle": {
+				"name": "Candle",
+				"type": "equipment",
+				"consumable": true,
+				"states": 2,
+				"light": [
+				{ 
+				"bright": 0, "dim": 1, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Firewood": {
+				"name": "Firewood",
+				"type": "equipment",
+				"consumable": true,
+				"states": 2,
+				"light": [
+				{ 
+				"bright": 2, "dim": 8, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Lantern (1h, R0)": {
+				"name": "Lantern (1h, R0)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 3,
+				"light": [
+				{ 
+				"bright": 2, "dim": 0, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				},
+				{ 
+				"bright": 5, "dim": 0, "angle": 85, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Lantern (1h, R1)": {
+				"name": "Lantern (1h, R1)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 3,
+				"light": [
+				{ 
+				"bright": 2, "dim": 3, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				},
+				{ 
+				"bright": 6, "dim": 0, "angle": 85, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Lantern (1h, R2)": {
+				"name": "Lantern (1h, R2)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 3,
+				"light": [
+				{ 
+				"bright": 3, "dim": 0, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				},
+				{ 
+				"bright": 7, "dim": 0, "angle": 85, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Lantern (1h, R3)": {
+				"name": "Lantern (1h, R3)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 3,
+				"light": [
+				{ 
+				"bright": 3, "dim": 4, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				},
+				{ 
+				"bright": 8, "dim": 0, "angle": 85, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Lantern (1h, R4)": {
+				"name": "Lantern (1h, R4)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 3,
+				"light": [
+				{ 
+				"bright": 4, "dim": 0, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				},
+				{ 
+				"bright": 9, "dim": 0, "angle": 85, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Lantern (1h, R5)": {
+				"name": "Lantern (1h, R5)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 3,
+				"light": [
+				{ 
+				"bright": 4, "dim": 5, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				},
+				{ 
+				"bright": 10, "dim": 0, "angle": 85, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Torch (1h, R0)": {
+				"name": "Torch (1h, R0)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 2,
+				"light": [
+				{ 
+				"bright": 4, "dim": 0, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Torch (1h, R1)": {
+				"name": "Torch (1h, R1)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 2,
+				"light": [
+				{ 
+				"bright": 4, "dim": 5, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Torch (1h, R2)": {
+				"name": "Torch (1h, R2)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 2,
+				"light": [
+				{ 
+				"bright": 5, "dim": 0, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Torch (1h, R3)": {
+				"name": "Torch (1h, R3)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 2,
+				"light": [
+				{ 
+				"bright": 5, "dim": 6, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Torch (1h, R4)": {
+				"name": "Torch (1h, R4)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 2,
+				"light": [
+				{ 
+				"bright": 6, "dim": 0, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			},
+			"Torch (1h, R5)": {
+				"name": "Torch (1h, R5)",
+				"type": "equipment",
+				"consumable": false,
+				"states": 2,
+				"light": [
+				{ 
+				"bright": 6, "dim": 7, "angle": 360, "color": "#ff9329", "alpha": 0.5,
+				"animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
+				}
+				]
+			}
+		}
+	},
   "default": {
     "system": "default",
     "topology": "none",

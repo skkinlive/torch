@@ -78,6 +78,15 @@ export default class TorchToken {
     return false;
   }
 
+  getInventory(source) {
+    let sourceObj = this._library.getLightSource(source);
+    if (sourceObj && sourceObj.consumable) {
+      return this._library.getInventory(this._token.actor, source);
+    } else if (sourceObj) {
+      return -1;
+    }
+  }
+
   /* Orchestrate State Management */
 
   async forceStateOff() {
