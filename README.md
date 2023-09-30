@@ -20,6 +20,7 @@ Out of the box, the following are available:
 | dcc | Lantern, "Torch, each"
 | ose | Torches, Lantern
 | reclaim-the-wild | Candle, Firewood, Lantern (1h, R0), Lantern (1h, R1),Lantern (1h, R2),Lantern (1h, R3), Lantern (1h, R4), Lantern (1h, R5), Torch (1h, R0), Torch (1h, R1), Torch (1h, R2), Torch (1h, R3), Torch (1h, R4), Torch (1h, R5)
+| dragonbane | Lantern, Oil Lamp, Torch, Tallow Candle
 
 This module just sheds light from the location of a player token upon demand based upon equipment inventory. It is recommended *not* to use this module for spells or equipment that have other capabilities you intend to use, like performing damage or setting down the equipment, but to rely upon other common approaches, like active effects or item piles, for those.
 
@@ -154,9 +155,9 @@ The following is the current status of translation. Some features have arrived, 
 
 | Language | Completion | Contributors |
 | -------- | ---------- | ------------ |
-| de    | `[##################----]` 18/22 (82%) | ToGreedy |
+| de    | `[######################]` 22/22 (100%) | ToGreedy, Beff42 |
 | en    | `[######################]` 22/22 (100%) | deuce, lupestro |
-| es    | `[############----------]` 12/22 (55%) | lozanoje |
+| es    | `[######################]` 12/22 (100%) | lozanoje, WallaceMcGregor |
 | fr    | `[##################----]` 18/22 (82%) | Aymeeric |
 | ja    | `[######################]` 22/22 (100%) | doumoku |
 | pt-br | `[############----------]` 12/22 (55%) | rinnocenti |

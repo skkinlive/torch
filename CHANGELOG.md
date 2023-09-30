@@ -2,6 +2,12 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.10.0 - Sept 30, 2023
+- [FEATURE] (Beff42) German translation now complete - plus Close button now localized
+- [FEATURE] (Beff42) Corrections to dimensions of Paizo cones and Dancing Lights for Starfinder. Many thanks to Beff42 for all the things!
+- [FEATURE] (WallaceMcGregor) Spanish translation now complete. Many thanks!
+- [FEATURE] (dataCobra) Light sources now supplied for Dragonbane
+
 ### 2.9.0 - Sept 17, 2023
 - [FEATURE] (doumoku) Japanese translation now provided. Many thanks, doumoku!
 - [BUGFIX] (Lupestro) The light sources delivered with the module are now all reflected accurately in the README.
