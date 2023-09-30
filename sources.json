@@ -270,7 +270,7 @@
           {
             "bright": 20,
             "dim": 20,
-            "angle": 35,
+            "angle": 90,
             "color": "#555555",
             "alpha": 0.5
           }
@@ -300,7 +300,7 @@
           {
             "bright": 100,
             "dim": 100,
-            "angle": 35,
+            "angle": 90,
             "color": "#555555",
             "alpha": 0.5
           }
@@ -315,7 +315,22 @@
           {
               "bright": 15,
               "dim": 15,
-              "angle": 35,
+              "angle": 90,
+              "color": "#555555",
+              "alpha": 0.5
+          }
+        ]
+      },
+      "Dancing Lights": {
+        "name": "Dancing Lights",
+        "type": "cantrip",
+        "consumable": false,
+        "states": 2,
+        "light": [
+          {
+              "bright": 0,
+              "dim": 10,
+              "angle": 360,
               "color": "#555555",
               "alpha": 0.5
           }

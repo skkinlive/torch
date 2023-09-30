@@ -27,7 +27,7 @@ export default class TokenHUD {
         buttons: {
           close: {
           icon: '<i class="fas fa-check"></i>',
-          label: "Close"
+          label: game.i18n.localize("Close")
           }
         },
         default: "close"
