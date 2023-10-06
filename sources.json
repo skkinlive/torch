@@ -796,10 +796,11 @@
         "consumable": false,
         "light": [
           {
-            "bright": 10,
-            "dim": 10,
+            "bright": 5,
+            "dim": 5,
             "angle": 360,
-            "alpha": 0.05,
+            "alpha": 0.1,
+            "color":"#f9f06b",
             "animation": {
               "type": "torch",
               "speed": 5,
@@ -815,10 +816,11 @@
         "consumable": false,
         "light": [
           {
-            "bright": 10,
-            "dim": 10,
+            "bright": 5,
+            "dim": 5,
             "angle": 360,
-            "alpha": 0.05,
+            "alpha": 0.1,
+            "color":"#f9f06b",
             "animation": {
               "type": "torch",
               "speed": 5,
@@ -834,10 +836,11 @@
         "consumable": false,
         "light": [
           {
-            "bright": 10,
-            "dim": 10,
+            "bright": 5,
+            "dim": 5,
             "angle": 360,
-            "alpha": 0.05,
+            "alpha": 0.1,
+            "color":"#f9f06b",
             "animation": {
               "type": "torch",
               "speed": 5,
@@ -853,14 +856,15 @@
         "consumable": false,
         "light": [
           {
-            "bright": 4,
-            "dim": 4,
+            "bright": 2,
+            "dim": 2,
             "angle": 360,
-            "alpha": 0.05,
+            "alpha": 0.1,
+            "color":"#f9f06b",
             "animation": {
               "type": "torch",
               "speed": 5,
-              "intensity": 5,
+              "intensity": 3,
               "reverse": false
             }
           }
