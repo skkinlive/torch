@@ -2,6 +2,11 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.11.0 - October 8, 2023
+- [FEATURE] (brantai) Added support for demonlord system
+- [BUGFIX] (dataCobra) Dragonbane lighting fixes
+- [BUGFIX] (Lupestro) Fix typo in additional light sources sample in README.md
+
 ### 2.10.0 - Sept 30, 2023
 - [FEATURE] (Beff42) German translation now complete - plus Close button now localized
 - [FEATURE] (Beff42) Corrections to dimensions of Paizo cones and Dancing Lights for Starfinder. Many thanks to Beff42 for all the things!

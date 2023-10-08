@@ -38,7 +38,7 @@ You can supersede these settings or supply settings for your own light sources f
     "aliases": {
       "Lantern (Bullseye)": "Bullseye Lantern",
       "Lantern (Hooded)": "Hooded Lantern"
-    }
+    },
     "sources": {
       "Candle": {
         "name": "Candle",
