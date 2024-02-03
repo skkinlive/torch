@@ -1,0 +1,24 @@
+{
+  "name": "torch",
+  "version": "2.12.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "echo \"No lint supplied yet\"",
+    "build": "echo \"No build supplied yet\"",
+    "test": "echo \"Error: no test automation supplied yet\""
+  },
+  "keywords": [],
+  "contributors": [
+    {
+      "name": "Deuce",
+      "flags": {}
+    },
+    {
+      "name": "Lupestro",
+      "email": "lupestro@macksoft.com",
+      "flags": {}
+    }
+  ],
+  "license": "SEE LICENSE IN README.md"
+}
