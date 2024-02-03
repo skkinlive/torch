@@ -75,8 +75,10 @@ jobs:
         pnpm lint
         pnpm build
         pnpm test
+        mv --force dist/torch.bundle.js torch.js
 
     # Create a zip file with all files required by the module to add to the release
     - name: Zip It
       run: |
-        zip ${{steps.name_zip.outputs.ZIP_NAME}} -r *.js lang torch.css module.json sources.json README.md 
+        cd dist
+        zip ${{steps.name_zip.outputs.ZIP_NAME}} -r torch.js torch.css lang module.json sources.json README.md 

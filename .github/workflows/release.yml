@@ -84,11 +84,12 @@ jobs:
       run: |
         pnpm install
         pnpm build
-        mv --force fudge-compiled.mjs fudge.mjs
+        mv --force dist/torch.bundle.js torch.js
 
     # Create a zip file with all files required by the module to add to the release
     - name: Zip It
       run: |
+        cd dist
         zip ${{steps.get_vars.outputs.ZIP_NAME}} -r *.js lang torch.css module.json sources.json README.md 
 
     # Create a release for this specific version
@@ -101,6 +102,6 @@ jobs:
         draft: false
         prerelease: false
         token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: './module.json, ./${{steps.get_vars.outputs.ZIP_NAME}}'
+        artifacts: 'dist/module.json, dist/${{steps.get_vars.outputs.ZIP_NAME}}'
         tag: ${{steps.get_vars.outputs.TAG_NAME}}
         body: 'Please copy/paste the current release data from CHANGELOG.md into this field'
