@@ -1,6 +1,6 @@
 {
   "name": "torch",
-  "version": "2.12.0",
+  "version": "2.11.1",
   "description": "Torch HUD Controls",
   "main": "src/torch.js",
   "scripts": {
