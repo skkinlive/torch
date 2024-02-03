@@ -75,8 +75,6 @@ jobs:
         pnpm lint
         pnpm build
         pnpm test
-        cd dist
-        mv --force torch.bundle.js torch.js
 
     # Create a zip file with all files required by the module to add to the release
     - name: Zip It

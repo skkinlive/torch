@@ -84,7 +84,6 @@ jobs:
       run: |
         pnpm install
         pnpm build
-        mv --force dist/torch.bundle.js torch.js
 
     # Create a zip file with all files required by the module to add to the release
     - name: Zip It
