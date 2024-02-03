@@ -30,7 +30,7 @@ jobs:
         echo "RELEASE_DOWNLOAD_URL=https://github.com/${{github.repository}}/releases/download/$TAG/torch-$TAG.zip" >> $GITHUB_OUTPUT
         echo "RELEASE_INSTALL_URL=https://github.com/${{github.repository}}/releases/download/$TAG/module.json" >> $GITHUB_OUTPUT
         JSON=$(cat ./module.json)
-        echo ::set-output name=MODULE::${JSON//'%'/'%25'}
+        echo ::set-output name=MODULE_JSON::${JSON//'%'/'%25'}
 
     # Run some tests to make sure our `module.json` is correct
     # Exit before setting up node if not
