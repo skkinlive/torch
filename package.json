@@ -1,7 +1,7 @@
 {
-  "name": "my-webpack-project",
-  "version": "1.0.0",
-  "description": "My webpack project",
+  "name": "torch",
+  "version": "2.12.0",
+  "description": "Torch HUD Controls",
   "main": "src/torch.js",
   "scripts": {
     "lint": "echo \"No lint supplied yet\"",
