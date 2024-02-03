@@ -1,4 +1,4 @@
-import { torchButtonToggles, torchButtonAbsent, cleanup } from './test-cases.js';
+import { torchButtonToggles, torchButtonAbsent, cleanup } from './test-cases.mjs';
 
 // const CLICK_DELAY = 10; /* ms */
 export let torchGenericBasicTests = (context) => {

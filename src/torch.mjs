@@ -1,9 +1,9 @@
-import Settings from "./settings.js";
-import TorchSocket from "./socket.js";
-import TokenHUD from "./hud.js";
-import TorchToken from "./token.js";
-import TorchApi from "./api.js";
-import SourceLibrary from "./library.js";
+import Settings from "./settings.mjs";
+import TorchSocket from "./socket.mjs";
+import TokenHUD from "./hud.mjs";
+import TorchToken from "./token.mjs";
+import TorchApi from "./api.mjs";
+import SourceLibrary from "./library.mjs";
 
 /*
  * ----------------------------------------------------------------------------
@@ -75,7 +75,7 @@ class Torch {
 
   static setupQuenchTesting() {
     console.log("Torch | --- In test environment - load test code...");
-    import("../test/test-hook.js")
+    import("../test/test-hook.mjs")
       .then((obj) => {
         try {
           obj.hookTests();

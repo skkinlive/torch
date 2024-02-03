@@ -1,4 +1,4 @@
-import TorchRequest from "./request.js";
+import TorchRequest from "./request.mjs";
 
 export default class TorchSocket {
   /*

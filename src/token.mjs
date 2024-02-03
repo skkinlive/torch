@@ -1,5 +1,5 @@
-import TorchSocket from "./socket.js";
-import Settings from "./settings.js";
+import TorchSocket from "./socket.mjs";
+import Settings from "./settings.mjs";
 
 let DEBUG = true;
 

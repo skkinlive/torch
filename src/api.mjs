@@ -1,6 +1,6 @@
-import Settings from "./settings.js";
-import SourceLibrary from "./library.js";
-import TorchToken from "./token.js";
+import Settings from "./settings.mjs";
+import SourceLibrary from "./library.mjs";
+import TorchToken from "./token.mjs";
 
 export default class TorchAPI {
   async #setup(sceneId, tokenId) {

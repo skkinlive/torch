@@ -1,4 +1,4 @@
-import getTopology from "./topology.js";
+import getTopology from "./topology.mjs";
 
 /* Library of light sources to use for this system */
 
