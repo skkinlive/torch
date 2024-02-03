@@ -67,17 +67,13 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18.x'
-        cache: 'npm'
 
-
-    # `npm ci` is recommended:
-    # https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+    # Set up pnpm
     - name: Install Dependencies
       uses: pnpm/action-setup@v2
       with: 
         version: 8
         run_install: true
-
 
     # Run our `build` script
     - name: Build All
