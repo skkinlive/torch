@@ -2,7 +2,7 @@ import Settings from "./settings.js";
 import TorchSocket from "./socket.js";
 import TokenHUD from "./hud.js";
 import TorchToken from "./token.js";
-import TorchApi from './api.js';
+import TorchApi from "./api.js";
 import SourceLibrary from "./library.js";
 
 /*
@@ -25,14 +25,14 @@ class Torch {
   /*
    * Add a torch button to the Token HUD - called from TokenHUD render hook
    */
-  static async addTorchButton(hud, hudHtml, hudData) {
+  static async addTorchButton(hud, hudHtml /*, hudData*/) {
     let actor = game.actors.get(hud.object.document.actorId);
     let library = await SourceLibrary.load(
       game.system.id,
-      Settings.lightRadii.bright, 
-      Settings.lightRadii.dim, 
-      Settings.inventoryItemName, 
-      Settings.gameLightSources, 
+      Settings.lightRadii.bright,
+      Settings.lightRadii.dim,
+      Settings.inventoryItemName,
+      Settings.gameLightSources,
       actor.prototypeToken.light,
     );
     let token = new TorchToken(hud.object.document, library);
@@ -40,10 +40,10 @@ class Torch {
 
     // Don't let the tokens we create for light sources have or use their own
     // light sources recursively.
-    if (hud.object.document.name in lightSources)  return;
+    if (hud.object.document.name in lightSources) return;
     if (!game.user.isGM && !Settings.playerTorches) return;
     if (!token.currentLightSource) {
-      TokenHUD.addQueryButton(token, hudHtml)
+      TokenHUD.addQueryButton(token, hudHtml);
       return;
     }
     /* Manage torch state */
@@ -53,7 +53,7 @@ class Torch {
       Torch.forceSourceOff,
       Torch.toggleLightSource,
       Torch.toggleLightHeld,
-      Torch.changeLightSource
+      Torch.changeLightSource,
     );
   }
 
@@ -67,12 +67,10 @@ class Torch {
     debugLog(`Forced ${token.currentLightSource} off`);
   }
 
-  static async toggleLightHeld(token) {
-
-  }
+  static async toggleLightHeld(/*token*/) {}
 
   static async changeLightSource(token, name) {
-	  await token.setCurrentLightSource(name);
+    await token.setCurrentLightSource(name);
   }
 
   static setupQuenchTesting() {
@@ -96,7 +94,7 @@ Hooks.on("ready", () => {
   Hooks.on("renderTokenHUD", (app, html, data) => {
     Torch.addTorchButton(app, html, data);
   });
-  Hooks.on("renderControlsReference", (app, html, data) => {
+  Hooks.on("renderControlsReference", (app, html /*, data*/) => {
     html.find("div").first().append(Settings.helpText);
   });
   game.socket.on("module.torch", (request) => {

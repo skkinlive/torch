@@ -1,5 +1,5 @@
-import { torchGenericBasicTests } from './generic-basic-tests.js';
-import { torchDnD5eBasicTests } from './dnd5e-basic-tests.js';
+//import { torchGenericBasicTests } from './generic-basic-tests.js';
+//import { torchDnD5eBasicTests } from './dnd5e-basic-tests.js';
 import { torchCommonLibraryTests } from './common-library-tests.js';
 import { torchCommonTokenTests } from './common-token-tests.js';
 export function hookTests() {

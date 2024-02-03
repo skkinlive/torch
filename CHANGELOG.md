@@ -6,7 +6,7 @@
 - [BUGFIX] (StormDarkwood) Fixed Dragonbane lighting *back* to what it should be. (It's in meters, not grids.)
 - [BUGFIX] (spikedshrike) Flashlight angle on SWADE was bugged - 3 degrees shipped should be 6 degrees (for 10:1 beam) or possible 53 degrees (for cone) - seeking clarification.
 - [BUGFIX] (Lupestro) After consultation with others, fixed GURPS beam angles from 3 to 6 degrees as well.
-- [INTERNAL] Adding build, test, and release automation to make process of delivering a new version closer to "pull the lever"
+- [INTERNAL] Adding build and release automation to make process of delivering a new version closer to "pull the lever"
 
 ### 2.11.0 - October 8, 2023
 - [FEATURE] (brantai) Added support for demonlord system
