@@ -79,15 +79,6 @@ export class MockToken {
 };
 
 export class MockGame {
-  getSetting(modname, settingName) { 
-    assert.equal(modname, 'torch');
-    let value = this.settingsData[settingName];
-    assert.notEqual(value, undefined, `Value for setting ${settingName} is undefined`);
-    return value;
-  };
-  getActor(id) {
-    return this.actorData.find ( (actor) => actor.system.id === id );
-  }
   constructor (system, actors, isGM, settings) {
     this.actorData = actors;
     this.settingsData = settings; 
@@ -100,4 +91,55 @@ export class MockGame {
       get : (modname, settingName) => this.getSetting(modname, settingName)
     }
   };
+  getSetting(modname, settingName) { 
+    assert.equal(modname, 'torch');
+    let value = this.settingsData[settingName];
+    assert.notEqual(value, undefined, `Value for setting ${settingName} is undefined`);
+    return value;
+  };
+  getActor(id) {
+    return this.actorData.find ( (actor) => actor.system.id === id );
+  }
 };
+
+export class MockScene {
+  tokens = [];
+  constructor(tokens) {
+    if (tokens) {
+      this.tokens = tokens;
+    }
+  }
+  randomNumericString() {
+    return Math.floor(Math.random() * 1000000).toString(16);
+  }
+  createEmbeddedDocuments (tokens) {
+    const newTokens = [];
+    // Give 'em all ids
+    for (const token of tokens) {
+      if (token.id) {
+        newTokens.push(Object.assign(token, {}));
+      } else {
+        newTokens.push(Object.assign(token, {id: this.randomNumericString()}));
+      }
+    }
+    this.tokens.concat(newTokens);
+  }
+  getEmbeddedDocument(type, id) {
+    assert.equal(type, 'Token');
+    let token = this.tokens.find( (token) => token.id === id);
+    assert.notEqual(token, undefined);
+    return token;
+  }
+  deleteEmbeddedDocuments(tokens) {
+    for (const token of tokens) {
+      assert.ok(this.tokens.find( (token) => token.id === id));
+    }
+    const remaining = [];
+    for (const token of this.tokens) {
+      if (!this.tokens.find( (token) => token.id === id)) {
+        remaining.push(token);
+      }
+    }
+    this.tokens = remaining;
+  }
+}
