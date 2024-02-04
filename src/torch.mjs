@@ -75,7 +75,7 @@ class Torch {
 
   static setupQuenchTesting() {
     console.log("Torch | --- In test environment - load test code...");
-    import("../test/test-hook.mjs")
+    import("../test/quench/test-hook.mjs")
       .then((obj) => {
         try {
           obj.hookTests();

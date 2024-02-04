@@ -1,4 +1,4 @@
-{
+export default {
   "dnd5e": {
     "system": "dnd5e",
     "topology": "standard",

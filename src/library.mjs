@@ -1,5 +1,5 @@
 import getTopology from "./topology.mjs";
-
+import commonSources from "./sources.mjs";
 /* Library of light sources to use for this system */
 
 export default class SourceLibrary {
@@ -90,13 +90,9 @@ export default class SourceLibrary {
     userLibrary,
     protoLight,
   ) {
-    // The common library is cached - to update it, you must reload the game.
+    // The common library is now baked in as source but applied only once.
     if (!SourceLibrary.commonLibrary) {
-      SourceLibrary.commonLibrary = await fetch(
-        "modules/torch/sources.json",
-      ).then((response) => {
-        return response.json();
-      });
+      SourceLibrary.commonLibrary = commonSources; 
       this.applyFieldDefaults(SourceLibrary.commonLibrary);
     }
 
@@ -109,24 +105,30 @@ export default class SourceLibrary {
       states: 2,
       light: [defaultLight],
     };
+    // If userLibrary is a string, it needs to be fetched, otherwise it is literal data.
+    let userData;
+    if (userLibrary) {
+      if (typeof userLibrary === "string") {
+        userData = await fetch(userLibrary)
+        .then((response) => {
+          return response.json();
+        })
+        .catch((reason) => {
+          console.warn("Failed loading user library: ", reason);
+          return;
+        });
+      } else {
+        userData = userLibrary;
+      }
+      if (userData) { // User library supplied as object
+        this.applyFieldDefaults(userData, SourceLibrary.commonLibrary);
+      }
+    } else { // No user library supplied
+      userData = {};
+    }
     // The user library reloads every time you open the HUD to permit cut and try.
-    let mergedLibrary = userLibrary
-      ? await fetch(userLibrary)
-          .then((response) => {
-            return response.json();
-          })
-          .then((userData) => {
-            this.applyFieldDefaults(userData, SourceLibrary.commonLibrary);
-            return mergeLibraries(
-              userData,
-              SourceLibrary.commonLibrary,
-              configuredLight,
-            );
-          })
-          .catch((reason) => {
-            console.warn("Failed loading user library: ", reason);
-          })
-      : mergeLibraries({}, SourceLibrary.commonLibrary, configuredLight);
+    let mergedLibrary = mergeLibraries(userData, SourceLibrary.commonLibrary, configuredLight);
+    
     // All local changes here take place against the merged data, which is a copy,
     // not against the common or user libraries.
     if (mergedLibrary[systemId]) {

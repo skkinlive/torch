@@ -92,8 +92,9 @@ export default class TorchToken {
 
   async forceStateOff() {
     // Need to deal with dancing lights
+    let priorState = this._token.getFlag("torch", "lightSourceState");
     await this._token.setFlag("torch", "lightSourceState", this.STATE_OFF);
-    await this._turnOffSource();
+    await this._turnOffSource(priorState === this.STATE_OFF || priorState === undefined);
   }
 
   async advanceState() {
@@ -128,7 +129,7 @@ export default class TorchToken {
 
   // Private internal methods
 
-  async _turnOffSource() {
+  async _turnOffSource(wasAlreadyOff) {
     let source = this._library.getLightSource(this.currentLightSource);
     if (TorchSocket.requestSupported("delete", this.currentLightSource)) {
       // separate token lighting
@@ -142,7 +143,7 @@ export default class TorchToken {
       // self lighting - to turn off, use light settings from prototype token
       let protoToken = game.actors.get(this._token.actorId).prototypeToken;
       await this._token.update(getLightUpdates(protoToken.light));
-      if (source.consumable) {
+      if (!wasAlreadyOff & source.consumable) {
         await this._consumeSource(source);
       }
     }
