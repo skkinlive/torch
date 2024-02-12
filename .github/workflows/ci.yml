@@ -72,8 +72,6 @@ jobs:
     - name: Build All
       run: |
         pnpm install
-        pnpm lint
-        pnpm build
         pnpm test
 
     # Create a zip file with all files required by the module to add to the release

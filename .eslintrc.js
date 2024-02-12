@@ -22,6 +22,15 @@ module.exports = {
   },
   overrides: [
     {
+      files: ["test/*.mjs"],
+      globals: {
+        it: "readable",
+        describe: "readable",
+        beforeEach: "readable",
+        afterEach: "readable",
+      },
+    },
+    {
       files: [".eslintrc.js", "webpack.config.js"],
       parserOptions: {
         sourceType: "script",

@@ -11,6 +11,9 @@ devDependencies:
   '@babel/eslint-parser':
     specifier: 7.23.10
     version: 7.23.10(@babel/core@7.23.9)(eslint@8.56.0)
+  '@babel/plugin-syntax-dynamic-import':
+    specifier: ^7.8.3
+    version: 7.8.3(@babel/core@7.23.9)
   '@babel/preset-env':
     specifier: ^7.23.9
     version: 7.23.9(@babel/core@7.23.9)
