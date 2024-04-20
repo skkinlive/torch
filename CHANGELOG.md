@@ -2,6 +2,10 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.12.0 - April 20, 2024
+- [FEATURE] Verified on V12 developer release but still works fine in V11.
+- [BUGFIX] Cleaned up V12 deprecation on Dancing Lights implementation.
+
 ### 2.11.1 - February 3, 2024
 - [BUGFIX] (StormDarkwood) Fixed Dragonbane lighting *back* to what it should be. (It's in meters, not grids.)
 - [BUGFIX] (spikedshrike) Flashlight angle on SWADE was bugged - 3 degrees shipped should be 6 degrees (for 10:1 beam) or possible 53 degrees (for cone) - seeking clarification.

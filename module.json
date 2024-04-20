@@ -2,7 +2,7 @@
   "id": "torch",
   "title": "Torch",
   "description": "Torch HUD Controls",
-  "version": "2.11.1",
+  "version": "2.12.0",
   "authors": [
     {
       "name": "Deuce",
@@ -71,11 +71,11 @@
     "torch.css"
   ],
   "manifest": "https://raw.githubusercontent.com/League-of-Foundry-Developers/torch/main/module.json",
-  "download": "https://github.com/League-of-Foundry-Developers/torch/releases/download/v2.11.1/torch-v2.11.1.zip",
+  "download": "https://github.com/League-of-Foundry-Developers/torch/releases/download/v2.12.0/torch-v2.12.0.zip",
   "url": "https://github.com/League-of-Foundry-Developers/torch",
   "compatibility": {
     "minimum": "10",
-    "verified": "11.315",
-    "maximum": "11"
+    "verified": "12.319",
+    "maximum": "12"
   }
 }
