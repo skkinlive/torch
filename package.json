@@ -33,6 +33,9 @@
     }
   ],
   "license": "SEE LICENSE IN README.md",
+  "dependencies": {
+    "ajv":"^8.13.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",

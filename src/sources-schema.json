@@ -1,0 +1,123 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://lupestro.net/schemas/torch/light-sources",
+    "title": "FoundryVTT Torch Module Light Sources",
+    "description": "Light source descriptions for the Torch Module of FoundryVTT",
+    "type": "object",
+    "additionalProperties": {
+        "type": "object",
+        "properties": {
+            "system": {
+                "description": "The system id of the system to which this set of data applies - must match hash key if supplied",
+                "type": "string"
+            },
+            "topology": {
+                "description": "The style of actor/item topology this system follows - currently standard or gurps",
+                "type": "string"
+            },
+            "quantity": {
+                "description": "The field within the item.system data to examine to determine the quantity of the item in the inventory",
+                "type": "string"
+            },
+            "aliases": {
+                "type": "object",
+                "description": "A list of new names that act as aliases for a corresponding existing item names",
+                "additionalProperties": {
+                    "type" :"string"
+                }
+            },
+            "sources": {
+                "type": "object",
+                "description": "Light sources to be recognized on this system",
+                "additionalProperties": {
+                    "type": "object",
+                    "description": "An object representing the settings for a light source - keyed by name",
+                    "properties": {
+                        "name": {
+                            "description": "The name of the light source in the inventory - must match key of item in hash",
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "The type of the item - typically either equipment or spell",
+                            "type": "string"
+                        },
+                        "consumable": {
+                            "description": "Whether an item of this type is consumed with every use, like a candle or torch",
+                            "type": "boolean"
+                        },
+                        "states": {
+                            "description": "The number of states this item goes through - this allows for multistate sources (like high-low-off) - 2 by default",
+                            "type": "integer"
+                        },
+                        "light": {
+                            "description": "An array of light settings - one less value in this array than the number of states - one by default",
+                            "$comment": "TODO: Get the real schema from the FoundryVTT folks - we should support everything they support and only that",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "bright": {
+                                        "type": "number"
+                                    },
+                                    "dim": {
+                                        "type": "number"
+                                    },
+                                    "angle": {
+                                        "type": "number"
+                                    },
+                                    "color": {
+                                        "type": "string"
+                                    },
+                                    "alpha": {
+                                        "type": "number"
+                                    },
+                                    "coloration": {
+                                        "type": "integer"
+                                    },
+                                    "negative": {
+                                        "type": "boolean"
+                                    },
+                                    "priority": {
+                                        "type": "integer"
+                                    },
+                                    "attenuation": {
+                                        "type": "number"
+                                    },
+                                    "luminosity": {
+                                        "type": "number"
+                                    },
+                                    "saturation": {
+                                        "type": "number"
+                                    },
+                                    "contrast": {
+                                        "type" : "number"
+                                    },
+                                    "shadows": {
+                                        "type": "number"
+                                    },
+                                    "animation": {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "speed": {
+                                                "type": "integer"
+                                            },
+                                            "intensity": {
+                                                "type": "integer"
+                                            },
+                                            "reverse": {
+                                                "type": "boolean"
+                                            }    
+                                        }
+                                    }    
+                                }
+                            }
+                        }
+                    }
+                }
+            }    
+        }
+    }
+}

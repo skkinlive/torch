@@ -1,5 +1,9 @@
 import getTopology from "./topology.mjs";
 import commonSources from "./sources.mjs";
+//import jsonlint from "jsonlint";
+import Ajv from "ajv";
+import schema from "./sources-schema.json";
+
 /* Library of light sources to use for this system */
 
 export default class SourceLibrary {
@@ -8,6 +12,55 @@ export default class SourceLibrary {
   constructor(library) {
     // Only invoke through static factory method load()
     this.library = library;
+  }
+
+  static async validateSourceJSON(userLibrary) {
+    let userData;
+    let errors;
+    let result = true;
+
+    let jsonText = await fetch(userLibrary)
+      .then((response) => {
+        return response.text();
+      })
+      .catch((reason) => {
+        errors = ["User library load error", reason];
+        result = false;
+        return;
+      });
+    if (result) {
+      try {
+        userData = JSON.parse(jsonText);
+      } catch (e) {
+        errors = [e.message];
+      }
+    }
+    if (result) {
+      const ajv = new Ajv();
+      if (!ajv.validate(schema, userData)) {
+        result = false;
+        errors = ajv.errors.map((error) => {
+          return `${error.keyword} at path "${error.instancePath}" ("${error.schemaPath}") ${error.message}`;
+        });
+      }
+    }
+    if (errors) {
+      console.log("Loading User Sources Failed", errors);
+      const errorshtml = errors
+        .map((err) => `<span>${err}</span>`)
+        .join("<br/>");
+      let warning = new Dialog({
+        title: "Loading User Sources Failed",
+        content: `<p>${errorshtml}</p>`,
+        buttons: {
+          close: {
+            label: "Close",
+          },
+        },
+      });
+      warning.render(true);
+    }
+    return [errors, userData];
   }
 
   static applyFieldDefaults(library, reference) {
@@ -109,14 +162,9 @@ export default class SourceLibrary {
     let userData;
     if (userLibrary) {
       if (typeof userLibrary === "string") {
-        userData = await fetch(userLibrary)
-        .then((response) => {
-          return response.json();
-        })
-        .catch((reason) => {
-          console.warn("Failed loading user library: ", reason);
-          return;
-        });
+        let errors;
+        [errors, userData] =
+          await SourceLibrary.validateSourceJSON(userLibrary);
       } else {
         userData = userLibrary;
       }
@@ -127,8 +175,12 @@ export default class SourceLibrary {
       userData = {};
     }
     // The user library reloads every time you open the HUD to permit cut and try.
-    let mergedLibrary = mergeLibraries(userData, SourceLibrary.commonLibrary, configuredLight);
-    
+    let mergedLibrary = mergeLibraries(
+      userData,
+      SourceLibrary.commonLibrary,
+      configuredLight,
+    );
+
     // All local changes here take place against the merged data, which is a copy,
     // not against the common or user libraries.
     if (mergedLibrary[systemId]) {
