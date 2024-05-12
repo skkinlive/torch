@@ -1,6 +1,8 @@
 import getTopology from "./topology.mjs";
 import commonSources from "./sources.mjs";
 //import jsonlint from "jsonlint";
+import JSON5 from "json5";
+import YAML from "js-yaml";
 import Ajv from "ajv";
 import schema from "./sources-schema.json";
 
@@ -18,8 +20,9 @@ export default class SourceLibrary {
     let userData;
     let errors;
     let result = true;
-
-    let jsonText = await fetch(userLibrary)
+    let configIsYaml =
+      userLibrary.lastIndexOf(".yaml") >= Math.max(0, userLibrary.length - 5);
+    let configText = await fetch(userLibrary)
       .then((response) => {
         return response.text();
       })
@@ -30,7 +33,11 @@ export default class SourceLibrary {
       });
     if (result) {
       try {
-        userData = JSON.parse(jsonText);
+        if (configIsYaml) {
+          userData = YAML.load(configText);
+        } else {
+          userData = JSON5.parse(configText);
+        }
       } catch (e) {
         errors = [e.message];
       }
@@ -45,7 +52,10 @@ export default class SourceLibrary {
       }
     }
     if (errors) {
-      console.log("Loading User Sources Failed", errors);
+      console.warn(
+        `Loading user light sources from "${userLibrary}" failed`,
+        errors,
+      );
       const errorshtml = errors
         .map((err) => `<span>${err}</span>`)
         .join("<br/>");
@@ -59,6 +69,8 @@ export default class SourceLibrary {
         },
       });
       warning.render(true);
+    } else {
+      console.log(`Loading user light sources from "${userLibrary}" succeeded`);
     }
     return [errors, userData];
   }

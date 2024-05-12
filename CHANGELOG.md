@@ -2,6 +2,12 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.13.0 - May 12, 2024 - User light sources UX improvements
+- [FEATURE] Using JSON5 for looser rules - comments, trailing commas, whitespace, continuation
+- [FEATURE] Validating light source JSON against schema
+- [FEATURE] Feedback you can act upon when light source JSON is invalid 
+- [FEATURE] Added support for light sources in YAML format
+
 ### 2.12.0 - April 20, 2024
 - [FEATURE] Verified on V12 developer release but still works fine in V11.
 - [BUGFIX] Cleaned up V12 deprecation on Dancing Lights implementation.
