@@ -887,7 +887,7 @@ dnd5e:
       assert.equal(errors.length, 1);
       assert.strictEqual(
         errors[0],
-        'type at path "/dnd5e/sources/Phantom Torch/consumable" ("#/additionalProperties/properties/sources/additionalProperties/properties/consumable/type") must be boolean',
+        'type at path "/dnd5e/sources/Phantom Torch/consumable" must be boolean',
       );
     });
     it("Gives expected errors when values and types in YAML are invalid", async () => {
@@ -933,7 +933,7 @@ dnd5e:
       assert.equal(errors.length, 1);
       assert.equal(
         errors[0],
-        'type at path "/dnd5e/sources/Phantom Torch/consumable" ("#/additionalProperties/properties/sources/additionalProperties/properties/consumable/type") must be boolean',
+        'type at path "/dnd5e/sources/Phantom Torch/consumable" must be boolean',
       );
     });
   });
