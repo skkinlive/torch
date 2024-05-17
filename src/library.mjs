@@ -1,10 +1,10 @@
-import getTopology from "./topology.mjs";
-import commonSources from "./sources.mjs";
 //import jsonlint from "jsonlint";
 import JSON5 from "json5";
 import YAML from "js-yaml";
 import Ajv from "ajv";
-import schema from "./sources-schema.json";
+import getTopology from "./topology.mjs";
+import commonSources from "./sources.mjs";
+import schema from "./schema.mjs";
 
 /* Library of light sources to use for this system */
 
@@ -16,21 +16,43 @@ export default class SourceLibrary {
     this.library = library;
   }
 
-  static async validateSourceJSON(userLibrary) {
+  static alertOnConfigDataErrors(errors) {
+    const errorshtml = errors.map((err) => `<span>${err}</span>`).join("<br/>");
+    let warning = new Dialog({
+      title: "Loading User Sources Failed",
+      content: `<p>${errorshtml}</p>`,
+      buttons: {
+        close: {
+          label: "Close",
+        },
+      },
+    });
+    warning.render(true);
+  }
+
+  static async validateSourceJSON(userLibrary, alert) {
     let userData;
     let errors;
     let result = true;
-    let configIsYaml =
-      userLibrary.lastIndexOf(".yaml") >= Math.max(0, userLibrary.length - 5);
-    let configText = await fetch(userLibrary)
-      .then((response) => {
-        return response.text();
-      })
-      .catch((reason) => {
-        errors = ["User library load error", reason];
-        result = false;
-        return;
-      });
+    const configIsText =
+      userLibrary.indexOf("{") === 0 || userLibrary.indexOf("---") === 0;
+    const configIsYaml =
+      userLibrary.indexOf("---") === 0 ||
+      userLibrary.lastIndexOf(".yaml") === Math.max(0, userLibrary.length - 5);
+    const sourceName = configIsText ? "inline text" : `"${userLibrary}"`;
+
+    let configText = configIsText
+      ? userLibrary // To avoid having to build a server running test cases
+      : await fetch(userLibrary)
+          .then((response) => {
+            return response.text();
+          })
+          .catch((reason) => {
+            errors = ["Error loading user library: ", reason];
+            result = false;
+            return;
+          });
+    // From here on, code is common
     if (result) {
       try {
         if (configIsYaml) {
@@ -39,6 +61,7 @@ export default class SourceLibrary {
           userData = JSON5.parse(configText);
         }
       } catch (e) {
+        result = false;
         errors = [e.message];
       }
     }
@@ -53,24 +76,14 @@ export default class SourceLibrary {
     }
     if (errors) {
       console.warn(
-        `Loading user light sources from "${userLibrary}" failed`,
+        `Loading user light sources from ${sourceName} failed`,
         errors,
       );
-      const errorshtml = errors
-        .map((err) => `<span>${err}</span>`)
-        .join("<br/>");
-      let warning = new Dialog({
-        title: "Loading User Sources Failed",
-        content: `<p>${errorshtml}</p>`,
-        buttons: {
-          close: {
-            label: "Close",
-          },
-        },
-      });
-      warning.render(true);
-    } else {
-      console.log(`Loading user light sources from "${userLibrary}" succeeded`);
+      if (alert) {
+        SourceLibrary.alertOnConfigDataErrors(errors);
+      }
+    } else if (!configIsText) {
+      console.log(`User light sources from ${sourceName} loaded`);
     }
     return [errors, userData];
   }
@@ -174,16 +187,18 @@ export default class SourceLibrary {
     let userData;
     if (userLibrary) {
       if (typeof userLibrary === "string") {
-        let errors;
-        [errors, userData] =
-          await SourceLibrary.validateSourceJSON(userLibrary);
+        [, userData] = await SourceLibrary.validateSourceJSON(
+          userLibrary,
+          true,
+        );
       } else {
         userData = userLibrary;
       }
       if (userData) { // User library supplied as object
         this.applyFieldDefaults(userData, SourceLibrary.commonLibrary);
       }
-    } else { // No user library supplied
+    } else {
+      // No user library supplied
       userData = {};
     }
     // The user library reloads every time you open the HUD to permit cut and try.

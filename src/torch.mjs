@@ -102,9 +102,9 @@ Hooks.on("ready", () => {
   });
 });
 
-Hooks.on("preUpdateSetting", (doc, changes, options, userId) => {
+Hooks.on("preUpdateSetting", (doc) => {
   if (doc.key === "torch.gameLightSources") {
-    SourceLibrary.validateSourceJSON(doc.value);
+    SourceLibrary.validateSourceJSON(doc.value, true);
   }
 });
 
