@@ -554,10 +554,8 @@ describe("Torch Library Tests >", () => {
       );
     });
   });
-  describe("library.applyFieldDefaults() tests >", () => {
-    beforeEach(async () => {});
-    afterEach(async () => {});
 
+  describe("library.applyFieldDefaults() tests >", () => {
     it("Loads valid JSON configuration successfully", async () => {
       const TESTDATA = `{
         "dnd5e": {
@@ -938,5 +936,26 @@ dnd5e:
         'type at path "/dnd5e/sources/Phantom Torch/consumable" ("#/additionalProperties/properties/sources/additionalProperties/properties/consumable/type") must be boolean',
       );
     });
+  });
+});
+
+describe("Random Construct Tests >", () => {
+  const yamlFileCheck = (library) => {
+    return [".yaml", ".yml"].includes(
+      library.substring(library.lastIndexOf(".")),
+    );
+  };
+
+  it("Properly detects absence of YAML file extensions in a URL", () => {
+    assert.equal(yamlFileCheck("bland-name"), false);
+  });
+  it("Isn't fooled by yaml extension elsewhere from the end", () => {
+    assert.equal(yamlFileCheck("bland-name.yaml.json"), false);
+  });
+  it("Properly detects presence of YAML file extensions in a URL", () => {
+    assert.equal(yamlFileCheck("bland-name.yaml"), true);
+  });
+  it("Properly detects presence of YML file extensions in a URL", () => {
+    assert.equal(yamlFileCheck("bland-name.yml"), true);
   });
 });

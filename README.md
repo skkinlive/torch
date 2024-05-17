@@ -28,13 +28,13 @@ This module just sheds light from the location of a player token upon demand bas
 Because the light source to use is now user-configurable, we no longer select a light source for you based on fallbacks. As it stands, if you do not explicitly select your light source, it will pick any among the light sources you have equipped, in no particular order. 
 ## Customizing light sources
 
-You can supersede these settings or supply settings for your own light sources for any system with a JSON file, which you can deliver through the "Additional Light Sources" setting. The following shows a fully specified light source and a couple of aliases:
+You can supersede these settings or supply settings for your own light sources for any system with a JSON file, which you can deliver through the "Additional Light Sources" setting. We support JSON5 syntax, which is tolerant of trailing commas and comments. The following shows a fully specified light source and a couple of aliases:
 ```json
 {
   "dnd5e": {
-    "system": "dnd5e",
-    "topology": "standard",
-    "quantity" : "quantity",
+    "system": "dnd5e", // Optional but, if supplied, must match the key above
+    "topology": "standard", // Optional - nearly all systems use standard topology
+    "quantity" : "quantity", // Optional - "quantity" is the default - see notes below
     "aliases": {
       "Lantern (Bullseye)": "Bullseye Lantern",
       "Lantern (Hooded)": "Hooded Lantern"
@@ -45,16 +45,17 @@ You can supersede these settings or supply settings for your own light sources f
         "type": "equipment",
         "consumable": true,
         "states": 2,
-        "light": [
+        "light": [ // If you have only 2 states, you can supply a single set of light stats rather than an array
           { 
             "bright": 10, "dim": 15, "angle": 360, "color": "#ff9329", "alpha": 0.5,
             "animation": { "type": "torch", "speed": 5, "intensity": 5, "reverse": false } 
           }
         ]
-      }
+      },
+      // Add additional sources for your system here
     }
   },
-  ...
+  // Add additional systems here
 }
 ```
 The JSON has one top-level property per system, keyed by the Foundry id of the system. For each system:
@@ -82,12 +83,46 @@ The JSON has one top-level property per system, keyed by the Foundry id of the s
   * The `light` value is an array of objects that specify the light properties for each "on" light state. It has no default.
     * Values for the "off" state are taken from the settings for the actor's prototype token.
     * If you supply a single object rather than an array of objects, the module will treat it as an array of one item,  (a light source with a single "on" state, the most common condition), and `states` will default to 2.
+  * In `animation`, the `type` field can currently take one of the following values. Aside from the first two, they match the list in the GUI in pretty obvious ways.
+    * `flame` (for `Torch` animation)
+    * `torch` (for `Flickering Light` animation)
+    * `revolving`, `siren`, `pulse`, `chroma`, `wave`, `fog`, `sunburst`,`dome`, `emanation`,`hexa`, `ghost`, `energy`
+    * `roiling`, `hole`, `vortex`, `witchwave`, `rainbowswirl`, `radialrainbow`, `fairy`, `grid`, `starlight`, `smokepatch` 
 
 * The `aliases` property lets you specify alternate names for existing sources. Each entry has a key and a value:
   * The key is the new name of the source .
   * The value is the name (as a string) of the existing source being duplicated.
   * The source you duplicate with a new name can either be one of the predefined sources or one of the sources from the same user settings.
 
+We now also support YAML, which some will find a lot easier to hand author. (Be sure to use the 'yaml' or 'yml' extension on your file.) The following is the equivalent YAML to the above JSON:
+```yaml
+---
+dnd5e:
+  system: dnd5e
+  topology: standard
+  quantity: quantity
+  aliases:
+    Lantern (Bullseye): Bullseye Lantern
+    Lantern (Hooded): Hooded Lantern
+  sources:
+    Candle:
+      name: Candle
+      type: equipment
+      consumable: true
+      states: 2
+      light:
+      - bright: 10
+        dim: 15
+        angle: 360
+        color: "#ff9329"
+        alpha: 0.5
+        animation:
+          type: torch
+          speed: 5
+          intensity: 5
+          reverse: false
+
+```
 ### Determining your system's id, topology, and quantity
 
 There are a few simple checks that can be done in a system to determine what to use for its id, topology and quantity values.

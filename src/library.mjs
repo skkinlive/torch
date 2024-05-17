@@ -17,10 +17,12 @@ export default class SourceLibrary {
   }
 
   static alertOnConfigDataErrors(errors) {
-    const errorshtml = errors.map((err) => `<span>${err}</span>`).join("<br/>");
+    const errorshtml = errors
+      .map((err) => `<span>${err.replaceAll("\n", "<br/>")}</span>`)
+      .join("<br/>");
     let warning = new Dialog({
       title: "Loading User Sources Failed",
-      content: `<p>${errorshtml}</p>`,
+      content: `<pre style="overflow-x:scroll;text-wrap:wrap"><code>${errorshtml}</code></pre>`,
       buttons: {
         close: {
           label: "Close",
@@ -34,11 +36,16 @@ export default class SourceLibrary {
     let userData;
     let errors;
     let result = true;
+    const yamlFileCheck = (library) => {
+      return [".yaml", ".yml"].includes(
+        library.substring(library.lastIndexOf(".")),
+      );
+    };
     const configIsText =
       userLibrary.indexOf("{") === 0 || userLibrary.indexOf("---") === 0;
-    const configIsYaml =
-      userLibrary.indexOf("---") === 0 ||
-      userLibrary.lastIndexOf(".yaml") === Math.max(0, userLibrary.length - 5);
+    const configIsYaml = configIsText
+      ? userLibrary.indexOf("---") === 0
+      : yamlFileCheck(userLibrary);
     const sourceName = configIsText ? "inline text" : `"${userLibrary}"`;
 
     let configText = configIsText
@@ -70,7 +77,7 @@ export default class SourceLibrary {
       if (!ajv.validate(schema, userData)) {
         result = false;
         errors = ajv.errors.map((error) => {
-          return `${error.keyword} at path "${error.instancePath}" ("${error.schemaPath}") ${error.message}`;
+          return `${error.keyword} at path "${error.instancePath}" ${error.message}`;
         });
       }
     }
