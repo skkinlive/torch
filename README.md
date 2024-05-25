@@ -179,7 +179,6 @@ Selects an equipped light source to be the current light source of the token.
 ### `game.Torch.inventory(sceneId, tokenId, source)`
 Returns the remaining quantity of the specified light source for the specified token.
 
-
 ### `game.Torch.sourceExhausted(sceneId, tokenId, source)`
 Returns true if the specified light source is consumable, and the instance held by the specified token has no more inventory.
 
@@ -196,7 +195,7 @@ The following is the current status of translation. Some features have arrived, 
 | es    | `[######################]` 12/22 (100%) | lozanoje, WallaceMcGregor |
 | fr    | `[##################----]` 18/22 (82%) | Aymeeric |
 | ja    | `[######################]` 22/22 (100%) | doumoku |
-| pt-br | `[############----------]` 12/22 (55%) | rinnocenti |
+| pt-br | `[######################]` 22/22 (100%) | Innocenti, Andersants |
 | zh-cn | `[##########------------]` 10/22 (56%) | xticime |
 | zh-tw | `[############----------]` 12/22 (45%) | zeteticl |
 
