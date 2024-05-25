@@ -2,6 +2,9 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.13.1 - May 25, 2024 - Brazilian Portuguese updated
+- [FEATURE] Completed Brazilian Portuguese translation
+
 ### 2.13.0 - May 12, 2024 - User light sources UX improvements
 - [FEATURE] Using JSON5 for looser rules - comments, trailing commas, whitespace, continuation
 - [FEATURE] Validating light source JSON against schema
