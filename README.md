@@ -194,6 +194,7 @@ The following is the current status of translation. Some features have arrived, 
 | en    | `[######################]` 22/22 (100%) | deuce, lupestro |
 | es    | `[######################]` 12/22 (100%) | lozanoje, WallaceMcGregor |
 | fr    | `[##################----]` 18/22 (82%) | Aymeeric |
+| it    | `[######################]` 22/22 (100%) | GregoryWarn |
 | ja    | `[######################]` 22/22 (100%) | doumoku |
 | pt-br | `[######################]` 22/22 (100%) | Innocenti, Andersants |
 | zh-cn | `[##########------------]` 10/22 (56%) | xticime |

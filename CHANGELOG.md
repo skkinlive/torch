@@ -2,6 +2,9 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.14.0 - August 10, 2024 - Italian translation added
+- [FEATURE] Italian translation provided (Thanks, @GregoryWarn)
+
 ### 2.13.1 - May 25, 2024 - Brazilian Portuguese updated
 - [FEATURE] Completed Brazilian Portuguese translation
 
