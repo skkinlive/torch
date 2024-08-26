@@ -22,6 +22,7 @@ Out of the box, the following are available:
 | reclaim-the-wild | Candle, Firewood, Lantern (1h, R0), Lantern (1h, R1),Lantern (1h, R2),Lantern (1h, R3), Lantern (1h, R4), Lantern (1h, R5), Torch (1h, R0), Torch (1h, R1), Torch (1h, R2), Torch (1h, R3), Torch (1h, R4), Torch (1h, R5)
 | dragonbane | Lantern, Oil Lamp, Torch, Tallow Candle
 | demonlord  | Candle, Lantern, Spotlight Lantern, Torch 
+| wwn | Torch, Lantern, Flamesight, The Light of Faith
 
 This module just sheds light from the location of a player token upon demand based upon equipment inventory. It is recommended *not* to use this module for spells or equipment that have other capabilities you intend to use, like performing damage or setting down the equipment, but to rely upon other common approaches, like active effects or item piles, for those.
 
