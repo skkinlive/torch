@@ -136,12 +136,14 @@ export default class SourceLibrary {
         if (sources[source].consumable === "false") {
           sources[source].consumable = false;
         }
+        // Normalize lights to be an array, not a single object
         if (
           sources[source].light &&
-          sources[source].light.constructor !== Array
+          sources[source].light.constructor.name !== "Array"
         ) {
           sources[source].light = [sources[source].light];
         }
+        // If states isn't specified, derive it by counting the lights and adding one for "off" state.
         if (
           sources[source].light &&
           sources[source].light.constructor.name === "Array" &&
