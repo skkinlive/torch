@@ -833,6 +833,61 @@ export default {
       }
     }
   },
+  "wwn": {
+    "system": "wwn",
+    "topology": "standard",
+    "quantity" : "quantity",
+    "sources": {
+      "Torch": {
+        "name": "Torch",
+        "type": "item",
+        "consumable": true,
+        "states": 2,
+        "light": [
+          {
+            "bright": 15, "dim": 30, "angle": 360, "color": "#ffad58", "alpha": 0.4,
+            "animation": { "type": "torch", "speed": 3, "intensity": 5, "reverse": false }
+          }
+        ]
+      },
+      "Lantern": {
+        "name": "Lantern",
+        "type": "item",
+        "consumable": false,
+        "states": 2,
+        "light": [
+          {
+            "bright": 15, "dim": 30, "angle": 360, "color": "#eccd8b", "alpha": 0.4,
+            "animation": { "type": "torch", "speed": 2, "intensity": 4, "reverse": false }
+          }
+        ]
+      },
+      "Flamesight": {
+        "name": "Flamesight",
+        "type": "art",
+        "consumable": false,
+        "states": 2,
+        "light": [
+          {
+            "bright": 15, "dim": 30, "angle": 360, "color": "#ffad58", "alpha": 0.4,
+            "animation": { "type": "torch", "speed": 3, "intensity": 5, "reverse": false }
+          }
+        ]
+      },   
+      "The Light of Faith": {
+        "name": "The Light of Faith",
+        "type": "art",
+        "consumable": false,
+        "states": 2,
+        "light": [
+          {
+            "bright": 15, "dim": 30, "angle": 360, "color": "#eccd8b", "alpha": 0.4,
+            "animation": { "type": "torch", "speed": 3, "intensity": 5, "reverse": false }
+          }
+        ]
+      },            
+    }
+  },
   "default": {
     "system": "default",
     "topology": "none",
