@@ -52,6 +52,11 @@ export default class SourceLibrary {
       ? userLibrary // To avoid having to build a server running test cases
       : await fetch(userLibrary)
           .then((response) => {
+            if (response.status !== 200) {
+              errors = [`User library ${userLibrary} not found`];
+              result = false;
+              return;
+            }
             return response.text();
           })
           .catch((reason) => {
@@ -139,7 +144,7 @@ export default class SourceLibrary {
         }
         if (
           sources[source].light &&
-          sources[source].light.constructor === Array &&
+          sources[source].light.constructor.name === "Array" &&
           !sources[source].states
         ) {
           sources[source].states = sources[source].light.length + 1;
