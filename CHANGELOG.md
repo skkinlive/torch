@@ -2,6 +2,10 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.15.1 - September 2, 2024 - Better error message for missing user sources file
+- [BUGFIX] The error message for a missing user sources file was cryptic - now just tells you
+- [BUGFIX] The fallbacks for lights as object to array and for missing states property weren't working
+
 ### 2.15.0 - September 2, 2024 - Worlds Without Number support and OSE cleanups
 - [FEATURE] Now supports Worlds Without Number (thanks, @fuzzymuzzi)
 - [FEATURE] Now supports Everyday Heroes
