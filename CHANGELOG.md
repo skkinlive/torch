@@ -2,6 +2,11 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.15.0 - September 2, 2024 - Worlds Without Number support and OSE cleanups
+- [FEATURE] Now supports Worlds Without Number (thanks, @fuzzymuzzi)
+- [FEATURE] Now supports Everyday Heroes
+- [BUGFIX] Adjustment to sources list for OSE light sources (thanks, @Andrew-Staggs)
+
 ### 2.14.0 - August 10, 2024 - Italian translation added
 - [FEATURE] Italian translation provided (Thanks, @GregoryWarn)
 

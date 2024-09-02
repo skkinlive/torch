@@ -16,6 +16,7 @@ Out of the box, the following are available:
 | pf2e | Candle, Lantern (Hooded), Lantern (Bull's Eye), Torch. Everburning Torch
 | sfrpg | "Comm Unit, Personal", "Portable Light, Beacon", "Portable Light, Flashlight", "Portable Light, Lantern", "Portable Light, Spotlight", 
 | earthdawn4e | Candle, Lantern (Hooded), Lantern (Bullseye), Torch
+| everyday-heroes | Flashlight/Headlamp, Glow Sticks
 | gurps | "Candle, Tallow", "Flashlight, Heavy", Mini Flashlight, Micro Flashlight, Survival Flashlight, Lantern, Torch, Bull's-Eye Lantern, "Electric Lantern, Small", "Electric Lantern, Large", Small Tactical Light, Large Tactical Light, Floodlight
 | dcc | Lantern, "Torch, each"
 | ose | Torches, Lantern
@@ -27,6 +28,7 @@ Out of the box, the following are available:
 This module just sheds light from the location of a player token upon demand based upon equipment inventory. It is recommended *not* to use this module for spells or equipment that have other capabilities you intend to use, like performing damage or setting down the equipment, but to rely upon other common approaches, like active effects or item piles, for those.
 
 Because the light source to use is now user-configurable, we no longer select a light source for you based on fallbacks. As it stands, if you do not explicitly select your light source, it will pick any among the light sources you have equipped, in no particular order. 
+
 ## Customizing light sources
 
 You can supersede these settings or supply settings for your own light sources for any system with a JSON file, which you can deliver through the "Additional Light Sources" setting. We support JSON5 syntax, which is tolerant of trailing commas and comments. The following shows a fully specified light source and a couple of aliases:
