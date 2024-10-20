@@ -2,6 +2,10 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.16.0 - October 20, 2024 - Token HUD light source tooltips
+- [FEATURE] Tooltips for the light sources are now much easier to read (and they don't disappear altogether in v13 proto 1. Now using standard Foundry tooltips.)
+- [INTERNAL] This module appears to work fine in v13.332, but is likely to break and need adjustment when Token HUD becomes a v2 app later in the v13 development cycle. The maximum version has been set accordingly. 
+
 ### 2.15.1 - September 2, 2024 - Better error message for missing user sources file
 - [BUGFIX] The error message for a missing user sources file was cryptic - now just tells you
 - [BUGFIX] The fallbacks for lights as object to array and for missing states property weren't working

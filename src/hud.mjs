@@ -1,10 +1,10 @@
-const BUTTON_HTML = `<div class="control-icon torch"><i class="fas fa-fire"></i></div>`;
+const BUTTON_HTML = `<div class="control-icon torch" data-tooltip="Torch"><i class="fas fa-fire"></i></div>`;
 const QUERY_BUTTON_HTML = `<div class="control-icon torch"><i class="fas fa-question"></i></div>`;
 const DISABLED_ICON_HTML = `<i class="fas fa-slash"></i>`;
 const SOURCE_MENU = `<div class="control-icon light-source-menu"></div>`;
 const SOURCE_MENU_ITEM = (img, tooltip) => {
-  return `<button type="button" class="light-source-menu-item" >
-	  <img src="${img}" title="${tooltip}" />
+  return `<button type="button" data-tooltip="${tooltip}" data-tooltip-direction="LEFT" class="light-source-menu-item" >
+	  <img src="${img}"/>
 	</button>`;
 };
 
