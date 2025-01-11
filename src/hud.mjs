@@ -1,4 +1,4 @@
-const BUTTON_HTML = `<div class="control-icon torch" data-tooltip="Torch"><i class="fas fa-fire"></i></div>`;
+const BUTTON_HTML = `<button type="button" class="control-icon torch" data-tooltip="Torch"><i class="fas fa-fire"></i></div>`;
 const QUERY_BUTTON_HTML = `<div class="control-icon torch"><i class="fas fa-question"></i></div>`;
 const DISABLED_ICON_HTML = `<i class="fas fa-slash"></i>`;
 const SOURCE_MENU = `<div class="control-icon light-source-menu"></div>`;
@@ -14,7 +14,11 @@ export default class TokenHUD {
    */
   static async addQueryButton(token, hudHtml) {
     let tbutton = $(QUERY_BUTTON_HTML);
-    hudHtml.find(".col.left").prepend(tbutton);
+    if (hudHtml.find) {
+      hudHtml.find(".col.left").prepend(tbutton);
+    } else {
+      hudHtml.querySelector(".col.left").prepend(tbutton);
+    }
     tbutton.find("i").click(async (event) => {
       event.preventDefault();
       event.stopPropagation();
@@ -56,15 +60,19 @@ export default class TokenHUD {
       disabledIcon.addClass("fa-stack-1x");
       tbutton.prepend(disabledIcon);
     }
-    hudHtml.find(".col.left").prepend(tbutton);
-    tbutton.find("i.fa-fire").contextmenu(async (event) => {
+    if (hudHtml.find) {
+      hudHtml.find(".col.left").prepend(tbutton);
+    } else {
+      hudHtml.querySelector(".col.left").prepend(tbutton[0]);
+    }
+    tbutton.contextmenu(async (event) => {
       event.preventDefault();
       event.stopPropagation();
       if (token.lightSourceState === token.STATE_OFF) {
         TokenHUD.toggleSourceMenu(tbutton, token, changeLightSource);
       }
     });
-    tbutton.find("i").click(async (event) => {
+    tbutton.click(async (event) => {
       event.preventDefault();
       event.stopPropagation();
       if (!tbutton.next().hasClass("light-source-menu")) {
