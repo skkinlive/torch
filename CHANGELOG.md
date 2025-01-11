@@ -2,6 +2,11 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.17.0 - January 11, 2025 - Ignore Equipment flag
+- [FEATURE] New config flag to completely ignore user equipment. Users can turn on any light source defined for the system.
+- [FEATURE] Rearranged config settings in preparation for give the last three settings a clearer role.
+- [INTERNAL] Tested and adjusted to work both with v12 and with early builds of v13.
+
 ### 2.16.0 - October 20, 2024 - Token HUD light source tooltips
 - [FEATURE] Tooltips for the light sources are now much easier to read (and they don't disappear altogether in v13 proto 1. Now using standard Foundry tooltips.)
 - [INTERNAL] This module appears to work fine in v13.332, but is likely to break and need adjustment when Token HUD becomes a v2 app later in the v13 development cycle. The maximum version has been set accordingly. 

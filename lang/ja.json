@@ -20,6 +20,8 @@
 	"torch.gameLightSources.hint": "追加の光源が含まれたJSONファイルを指定します。",
 	"torch.brightRadius.name": "「明るい」光半径",
 	"torch.dimRadius.name": "「薄暗い」光半径",
+	"torch.ignoreEquipment.name": "Ignore Equipment",
+	"torch.ignoreEquipment.hint": "Offer light sources regardless of actor's owned equipment",
 	"torch.help.supplyExhausted.title": "底が尽きた",
 	"torch.help.supplyExhausted.body": "<p>君の光源は消費可能で、所持数が０個になった。新たに灯す場合は所持数を増やすこと。</p>",
 	"torch.help.setupSources.title": "光源を設定",

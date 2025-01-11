@@ -15,6 +15,9 @@ export default class Settings {
   static get playerTorches() {
     return game.settings.get("torch", "playerTorches");
   }
+  static get ignoreEquipment() {
+    return game.settings.get("torch", "ignoreEquipment");
+  }
   static get gmUsesInventory() {
     return game.settings.get("torch", "gmUsesInventory");
   }
@@ -46,14 +49,30 @@ export default class Settings {
     let ctrlOnClick = game.i18n.localize("torch.holdCtrlOnClick");
     return CTRL_REF_HTML(turnOffLights, ctrlOnClick);
   }
-
   static register() {
+    game.settings.register("torch", "gameLightSources", {
+      name: game.i18n.localize("torch.gameLightSources.name"),
+      hint: game.i18n.localize("torch.gameLightSources.hint"),
+      filePicker: "any",
+      scope: "world",
+      config: true,
+      default: "",
+      type: String,
+    });
     game.settings.register("torch", "playerTorches", {
       name: game.i18n.localize("torch.playerTorches.name"),
       hint: game.i18n.localize("torch.playerTorches.hint"),
       scope: "world",
       config: true,
       default: true,
+      type: Boolean,
+    });
+    game.settings.register("torch", "ignoreEquipment", {
+      name: game.i18n.localize("torch.ignoreEquipment.name"),
+      hint: game.i18n.localize("torch.ignoreEquipment.hint"),
+      scope: "world",
+      config: true,
+      default: false,
       type: Boolean,
     });
     game.settings.register("torch", "gmUsesInventory", {
@@ -72,21 +91,22 @@ export default class Settings {
       default: true,
       type: Boolean,
     });
+    if (game.system.id === "dnd5e") {
+      game.settings.register("torch", "dancingLightVision", {
+        name: game.i18n.localize("torch.dancingLightVision.name"),
+        hint: game.i18n.localize("torch.dancingLightVision.hint"),
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+      });
+    }
     game.settings.register("torch", "gmInventoryItemName", {
       name: game.i18n.localize("torch.gmInventoryItemName.name"),
       hint: game.i18n.localize("torch.gmInventoryItemName.hint"),
       scope: "world",
       config: true,
       default: "torch",
-      type: String,
-    });
-    game.settings.register("torch", "gameLightSources", {
-      name: game.i18n.localize("torch.gameLightSources.name"),
-      hint: game.i18n.localize("torch.gameLightSources.hint"),
-      filePicker: "any",
-      scope: "world",
-      config: true,
-      default: "",
       type: String,
     });
     game.settings.register("torch", "brightRadius", {
@@ -105,15 +125,5 @@ export default class Settings {
       default: 40,
       type: Number,
     });
-    if (game.system.id === "dnd5e") {
-      game.settings.register("torch", "dancingLightVision", {
-        name: game.i18n.localize("torch.dancingLightVision.name"),
-        hint: game.i18n.localize("torch.dancingLightVision.hint"),
-        scope: "world",
-        config: true,
-        default: false,
-        type: Boolean,
-      });
-    }
   }
 }

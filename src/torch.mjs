@@ -34,6 +34,7 @@ class Torch {
       Settings.inventoryItemName,
       Settings.gameLightSources,
       actor.prototypeToken.light,
+      Settings.ignoreEquipment,
     );
     let token = new TorchToken(hud.object.document, library);
     let lightSources = token.ownedLightSources;
@@ -88,6 +89,17 @@ class Torch {
         console.log("Torch | --- No test code found", err);
       });
   }
+  static grayOutInventorySettings(html, hide) {
+    for (const setting of ["gmUsesInventory", "playerUsesInventory"]) {
+      const div = html.querySelector(`div[data-setting-id="torch.${setting}"]`);
+      const label = div.querySelector("label");
+      const input = div.querySelector("input");
+      const p = div.querySelector("p");
+      label.classList.toggle("torch-inactive", hide);
+      input.toggleAttribute("disabled", hide);
+      p.classList.toggle("torch-inactive", hide);
+    }
+  }
 }
 
 Hooks.on("ready", () => {
@@ -110,6 +122,19 @@ Hooks.on("preUpdateSetting", (doc, changes) => {
     }
     SourceLibrary.validateSourceJSON(cleanedValue, true);
   }
+});
+
+Hooks.on("renderSettingsConfig", (app, [html]) => {
+  // Set up grayed settings based on ignoreEquipment at time of render
+  const elem = html.querySelector(
+    `div[data-setting-id="torch.ignoreEquipment"] input`,
+  );
+  Torch.grayOutInventorySettings(html, elem.checked);
+  // Change what is grayed as the user changes settings
+  const ignoreEquipmentChangeListener = (event) => {
+    Torch.grayOutInventorySettings(html, event.target.checked);
+  };
+  elem.addEventListener("change", ignoreEquipmentChangeListener);
 });
 
 Hooks.once("init", () => {

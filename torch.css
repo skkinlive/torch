@@ -1,3 +1,6 @@
+.torch-inactive {
+    color: gray !important;
+}
 .control-icon.torch i.fa-slash {
     position: absolute;
     color: tomato;

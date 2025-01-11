@@ -20,6 +20,8 @@
     "torch.gameLightSources.hint": "JSON Datei mit zusätzlichen Lichtquellen, die über die mitgelieferten hinaus verwendet werden sollen",
     "torch.brightRadius.name": "Radius des hellen Lichts",
     "torch.dimRadius.name": "Radius des gedämpften Lichts",
+	"torch.ignoreEquipment.name": "Ignore Equipment",
+	"torch.ignoreEquipment.hint": "Offer light sources regardless of actor's owned equipment",
 	"torch.help.supplyExhausted.title": "Vorrat erschöpft",
 	"torch.help.supplyExhausted.body": "<p>Die Lichtquelle ist ein Verbrauchsgegenstand und es sind keine Gegenstände mehr übrig. Erhöhe die Anzahl der Gegenstände, um eine neue zu entzünden.</p>",
 	"torch.help.setupSources.title": "Konfiguration von Lichtquellen",

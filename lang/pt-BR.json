@@ -20,6 +20,8 @@
 	"torch.gameLightSources.hint": "Arquivo JSON contendo fontes de luz adicionais para usar além das fornecidas",
 	"torch.brightRadius.name": "Raio de Luz Brilhante",
 	"torch.dimRadius.name": "Raio de Luz Fraca",
+	"torch.ignoreEquipment.name": "Ignore Equipment",
+	"torch.ignoreEquipment.hint": "Offer light sources regardless of actor's owned equipment",
 	"torch.help.supplyExhausted.title": "Suprimento Esgotado",
 	"torch.help.supplyExhausted.body": "<p>Seu fonte de luz é consumível e sua quantidade caiu para zero. Aumente a quantidade do item para acender um novo.</p>",
 	"torch.help.setupSources.title": "Configurar Fontes de Luz",

@@ -20,6 +20,8 @@
 	"torch.gameLightSources.hint": "JSON file containing additional light sources to use beyond those supplied",
 	"torch.brightRadius.name": "Bright Light Radius",
 	"torch.dimRadius.name": "Dim Light Radius",
+	"torch.ignoreEquipment.name": "Ignore Equipment",
+	"torch.ignoreEquipment.hint": "Offer light sources regardless of actor's owned equipment",
 	"torch.help.supplyExhausted.title": "Supply Exhausted",
 	"torch.help.supplyExhausted.body": "<p>Your light source is consumable and your quantity has dropped to zero. Increase the quantity of the item to light a fresh one.</p>",
 	"torch.help.setupSources.title": "Setting Up Light Sources",

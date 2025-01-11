@@ -20,6 +20,8 @@
 	"torch.gameLightSources.hint": "File JSON contenente fonti di luce addizionali da usare in aggiunta a quelle fornite",
 	"torch.brightRadius.name": "Raggio Luce Intensa",
 	"torch.dimRadius.name": "Raggio Luce Fioca",
+	"torch.ignoreEquipment.name": "Ignore Equipment",
+	"torch.ignoreEquipment.hint": "Offer light sources regardless of actor's owned equipment",
     "torch.help.supplyExhausted.title": "Scorta Esaurita",
 	"torch.help.supplyExhausted.body": "<p>La tua fonte di luce è consumabile e la tua quantità è scesa a zero. Aumenta la quantità dell'oggetto per accenderne uno nuovo.</p>",
 	"torch.help.setupSources.title": "Impostazione delle sorgenti luminose",
