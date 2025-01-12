@@ -2,6 +2,11 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.18.0 - January 12, 2025 - Dim/Bright config is now purely fallback
+- [FEATURE] Eliminated confusing name/bright/dim override setting.
+  * On systems that have no sources configured, a source with this name and those light values becomes the sole source.
+  * On systems that have sources configured, the name specifies which source to use by default, rather than "just picking one." (The dim/bright values are completely ignored on these systems.)
+
 ### 2.17.0 - January 11, 2025 - Ignore Equipment flag
 - [FEATURE] New config flag to completely ignore user equipment. Users can turn on any light source defined for the system.
 - [FEATURE] Rearranged config settings in preparation for give the last three settings a clearer role.

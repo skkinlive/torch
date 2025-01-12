@@ -190,15 +190,6 @@ export default class SourceLibrary {
       this.applyFieldDefaults(SourceLibrary.commonLibrary);
     }
 
-    let defaultLight = Object.assign({}, protoLight);
-    defaultLight.bright = selfBright;
-    defaultLight.dim = selfDim;
-    let configuredLight = {
-      system: systemId,
-      name: selfItem,
-      states: 2,
-      light: [defaultLight],
-    };
     // If userLibrary is a string, it needs to be fetched, otherwise it is literal data.
     let userData;
     if (userLibrary) {
@@ -221,7 +212,6 @@ export default class SourceLibrary {
     let mergedLibrary = mergeLibraries(
       userData,
       SourceLibrary.commonLibrary,
-      configuredLight,
       ignoreEquipment, //Makes nothing consumable
     );
 
@@ -245,6 +235,11 @@ export default class SourceLibrary {
       let defaultLibrary = mergedLibrary["default"];
       defaultLibrary.sources["Self"].light[0].bright = selfBright;
       defaultLibrary.sources["Self"].light[0].dim = selfDim;
+      if (selfItem && selfItem.length > 0) {
+        defaultLibrary.sources[selfItem] = defaultLibrary.sources["Self"];
+        defaultLibrary.sources[selfItem].name = selfItem;
+        delete defaultLibrary.sources.Self;
+      }
       const library = new SourceLibrary(defaultLibrary);
       library.ignoreEquipment = ignoreEquipment;
       return library;
@@ -321,7 +316,6 @@ export default class SourceLibrary {
 let mergeLibraries = function (
   userLibrary,
   commonLibrary,
-  configuredLight,
   nothingIsConsumable,
 ) {
   let mergedLibrary = {};
@@ -362,53 +356,13 @@ let mergeLibraries = function (
         };
       }
     }
-    // Source properties for configured source override common library but not user library
-    let configuredName = "";
-    if (configuredLight.name) {
-      let inUserLibrary = false;
-      let template = null;
-      if (system === configuredLight.system) {
-        for (let source in mergedLibrary[system].sources) {
-          if (source.toLowerCase() === configuredLight.name.toLowerCase()) {
-            inUserLibrary = true;
-            break;
-          }
-        }
-        if (!inUserLibrary && commonLibrary[system]) {
-          for (let source in commonLibrary[system].sources) {
-            if (source.toLowerCase() === configuredLight.name.toLowerCase()) {
-              configuredName = source;
-              template = commonLibrary[system].sources[source];
-              break;
-            }
-          }
-          if (!configuredName) {
-            configuredName = configuredLight.name; //But might be blank
-          }
-          // We finally have the best name to use and perhaps a template
-          // We can build one
-          mergedLibrary[system].sources[configuredName] = {
-            name: configuredName,
-            type: template ? template["type"] : "equipment",
-            consumable: nothingIsConsumable
-              ? false
-              : template
-                ? template["consumable"]
-                : true,
-            states: configuredLight.states,
-            light: configuredLight.light,
-          };
-        }
-      }
-    }
     // Finally, we will deal with the common library for whatever is left
     if (system in commonLibrary) {
       for (let source in commonLibrary[system].sources) {
         if (
-          (!userLibrary ||
-            !(system in userLibrary) ||
-            !(source in userLibrary[system].sources)) &&
-          (!configuredName || source !== configuredName)
+          !userLibrary ||
+          !(system in userLibrary) ||
+          !(source in userLibrary[system].sources)
         ) {
           let commonSource = commonLibrary[system].sources[source];
           mergedLibrary[system].sources[source] = {

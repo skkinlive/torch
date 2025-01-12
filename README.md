@@ -1,6 +1,6 @@
 # Torch module for Foundry VTT
 
-This module provides a HUD toggle button for turning on and off a configurable radius of bright and dim light around you. This default source ("Self") is provided for any system for which we don't supply more specialized capabilities. (The bright and dim settings in the configuration are intended for use only in this case.)
+This module provides a HUD toggle button for turning on and off a configurable radius of bright and dim light around you. A default source can be configured in settings for any system for which we don't supply more specialized capabilities.
 
 However, we now have a variety of core light sources configured for D&D 5th Ed, Savage Worlds, Pathfinder 1st and 2nd editions, GURPS, and Earthdawn. You can select which light source the button will manipulate by right-clicking and clicking the desired source from the menu of buttons that appear for light sources in the actor's inventory or spell list. 
 
@@ -45,7 +45,7 @@ Besides the user light source file described in the following section:
 
 It all depends how you want to run your game.
 
-And, again, the bright and dim light settings are intended only as a fallback for use when you are playing in a system where nobody has supplied a set of light sources. (Ignore the name setting right above it. That is imminently about to go away.)
+The bright and dim light settings are intended only as a fallback for use when you are playing in a system where nobody has supplied a set of light sources. The settings will appear with the light source name specified with them. (In systems which *do* have a set of light sources, the fallback name identifies the source to use if the user hasn't yet selected a light source.)
 
 ## Customizing light sources
 
@@ -211,15 +211,15 @@ The following is the current status of translation. Some features have arrived, 
 
 | Language | Completion | Contributors |
 | -------- | ---------- | ------------ |
-| de    | `[######################]` 22/23 (96%) | ToGreedy, Beff42 |
-| en    | `[######################]` 23/23 (100%) | deuce, lupestro |
-| es    | `[######################]` 22/23 (96%) | lozanoje, WallaceMcGregor |
-| fr    | `[##################----]` 18/23 (78%) | Aymeeric |
-| it    | `[######################]` 22/23 (96%) | GregoryWarn |
-| ja    | `[######################]` 22/23 (96%) | doumoku |
-| pt-br | `[######################]` 22/23 (96%) | Innocenti, Andersants |
-| zh-cn | `[##########------------]` 10/23 (43%) | xticime |
-| zh-tw | `[############----------]` 12/23 (52%) | zeteticl |
+| de    | `[################--------]` 16/24 (67%) | ToGreedy, Beff42 |
+| en    | `[########################]` 24/24 (100%) | deuce, lupestro |
+| es    | `[################--------]` 16/24 (67%) | lozanoje, WallaceMcGregor |
+| fr    | `[############------------]` 12/24 (50%) | Aymeeric |
+| it    | `[################--------]` 16/24 (67%) | GregoryWarn |
+| ja    | `[################--------]` 16/24 (67%) | doumoku |
+| pt-br | `[################--------]` 16/24 (67%) | Innocenti, Andersants |
+| zh-cn | `[######------------------]` 06/24 (25%) | xticime |
+| zh-tw | `[########----------------]` 08/24 (33%) | zeteticl |
 
 PRs for further translations will be dealt with promptly. While Korean is most especially desired (thank you, doumoku for Japanese, also on the short list) - all others are welcome. 
 

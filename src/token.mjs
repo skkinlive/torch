@@ -50,7 +50,7 @@ export default class TorchToken {
       return lightSource;
     }
     // The one the GM asked for
-    let itemName = Settings.inventoryItemName;
+    let itemName = Settings.fallbackSourceName;
     let namedSource = itemName
       ? this._ownedSources.find(
           (item) => item.name.toLowerCase() === itemName.toLowerCase(),

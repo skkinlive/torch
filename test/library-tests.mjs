@@ -166,8 +166,8 @@ describe("Torch Library Tests >", () => {
       let torch = library.getLightSource("torch");
       assert.deepEqual(
         torch.light[0],
-        { bright: 10, dim: 50 },
-        "torch brightness from settings came in correctly",
+        { bright: 20, dim: 40, angle: 360 },
+        "torch brightness came in from library not from fallback",
       );
       let phantom = library.getLightSource("phantom torch");
       assert.equal(phantom, undefined, "No phantom torch defined as expected");
@@ -205,8 +205,8 @@ describe("Torch Library Tests >", () => {
       let torch = library.getLightSource("torch");
       assert.deepEqual(
         torch.light[0],
-        { bright: 10, dim: 50 },
-        "torch brightness from settings came in correctly",
+        { bright: 20, dim: 40, angle: 360 },
+        "torch brightness came in from library not from fallback",
       );
       let candle = library.getLightSource("candle");
       assert.deepEqual(
@@ -252,6 +252,25 @@ describe("Torch Library Tests >", () => {
         { bright: 10, dim: 0, angle: 3, color: "#ffd6aa", alpha: 1.0 },
         "user flashlight light settings match",
       );
+    });
+    it("library load for an unspecified system without a user library", async () => {
+      assert.equal(
+        SourceLibrary.commonLibrary,
+        undefined,
+        "no common library loaded initially",
+      );
+      let library = await SourceLibrary.load("unspecified", 10, 50, "Torch");
+      assert.ok(SourceLibrary.commonLibrary, "common library loaded");
+      let torch = library.getLightSource("torch");
+      assert.deepEqual(
+        torch.light[0],
+        { bright: 10, dim: 50, angle: 360 },
+        "torch brightness came in from the fallback settings",
+      );
+      let candle = library.getLightSource("candle");
+      assert.equal(candle, undefined, "No phantom torch defined as expected");
+      let phantom = library.getLightSource("phantom torch");
+      assert.equal(phantom, undefined, "No phantom torch defined as expected");
     });
   });
 });
