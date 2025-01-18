@@ -211,7 +211,7 @@ The following is the current status of translation. Some features have arrived, 
 
 | Language | Completion | Contributors |
 | -------- | ---------- | ------------ |
-| de    | `[################--------]` 16/24 (67%) | ToGreedy, Beff42 |
+| de    | `[########################]` 24/24 (100%) | ToGreedy, Beff42, MKBraun |
 | en    | `[########################]` 24/24 (100%) | deuce, lupestro |
 | es    | `[################--------]` 16/24 (67%) | lozanoje, WallaceMcGregor |
 | fr    | `[############------------]` 12/24 (50%) | Aymeeric |

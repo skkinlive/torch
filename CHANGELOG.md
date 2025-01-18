@@ -2,6 +2,9 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.19.0 - January 18, 2025 - Updated German translation
+- [FEATURE] German translation updated with 8 strings - thanks, MKBraun!
+
 ### 2.18.0 - January 12, 2025 - Dim/Bright config is now purely fallback
 - [FEATURE] Eliminated confusing name/bright/dim override setting.
   * On systems that have no sources configured, a source with this name and those light values becomes the sole source.
