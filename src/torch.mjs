@@ -4,7 +4,7 @@ import TokenHUD from "./hud.mjs";
 import TorchToken from "./token.mjs";
 import TorchApi from "./api.mjs";
 import SourceLibrary from "./library.mjs";
-
+/* global CONFIG */
 /*
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
@@ -61,17 +61,20 @@ class Torch {
   static async toggleLightSource(token) {
     let newState = await token.advanceState();
     debugLog(`${token.currentLightSource} is now ${newState}`);
+    Hooks.callAll("torch.changed", token.currentLightSource, newState);
   }
 
   static async forceSourceOff(token) {
     await token.forceSourceOff();
     debugLog(`Forced ${token.currentLightSource} off`);
+    Hooks.callAll("torch.changed", token.currentLightSource, "off");
   }
 
   static async toggleLightHeld(/*token*/) {}
 
   static async changeLightSource(token, name) {
     await token.setCurrentLightSource(name);
+    Hooks.callAll("torch.selected", token.currentLightSource);
   }
 
   static setupQuenchTesting() {

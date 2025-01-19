@@ -2,6 +2,9 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.20.0 - January 19, 2025 - Added hook for torch changes
+- [FEATURE] Added hooks "torch.changed" and "torch.selected" so macros can respond to torch changes.
+
 ### 2.19.0 - January 18, 2025 - Updated German translation
 - [FEATURE] German translation updated with 8 strings - thanks, MKBraun!
 
