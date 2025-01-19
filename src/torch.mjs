@@ -61,20 +61,34 @@ class Torch {
   static async toggleLightSource(token) {
     let newState = await token.advanceState();
     debugLog(`${token.currentLightSource} is now ${newState}`);
-    Hooks.callAll("torch.changed", token.currentLightSource, newState);
+    Hooks.callAll(
+      "torch.changed",
+      token._token._object,
+      token.currentLightSource,
+      newState,
+    );
   }
 
   static async forceSourceOff(token) {
     await token.forceSourceOff();
     debugLog(`Forced ${token.currentLightSource} off`);
-    Hooks.callAll("torch.changed", token.currentLightSource, "off");
+    Hooks.callAll(
+      "torch.changed",
+      token._token._object,
+      token.currentLightSource,
+      "off",
+    );
   }
 
   static async toggleLightHeld(/*token*/) {}
 
   static async changeLightSource(token, name) {
     await token.setCurrentLightSource(name);
-    Hooks.callAll("torch.selected", token.currentLightSource);
+    Hooks.callAll(
+      "torch.selected",
+      token._token._object,
+      token.currentLightSource,
+    );
   }
 
   static setupQuenchTesting() {

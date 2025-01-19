@@ -206,13 +206,15 @@ Returns true if the specified light source is consumable, and the instance held 
 ## Hooks for macro authors
 Because sometimes you want to respond to somebody clicking on the torch in the HUD, we also provide the following hooks:
 
-### "torch.changed" source, state
+### `"torch.changed" token, source, state`
 The light source state changed, either via toggling or by turning off directly.
+* **token**: The token for which the light source state has changed
 * **source**: The name of the light source
 * **state**: The new state - "on", "dim", "off"
 
-### "torch.selected" source
+### `"torch.selected" token, source`
 A new light source was selected.
+* **token**: The token for which the light source has been selected
 * **source**: The name of the light source now selected
 
 ## Changelog - now in [separate file](./CHANGELOG.md)
