@@ -175,6 +175,24 @@ export default class SourceLibrary {
     }
   }
 
+  static updateFallbackLightSource(library, item, bright, dim) {
+    const hash = library.sources;
+    const name = Object.keys(hash)[0];
+    if (item) {
+      delete hash[name];
+      hash[item] = {
+        name: item,
+        type: "none",
+        consumable: false,
+        states: 2,
+        light: [{ bright: bright, dim: dim, angle: 360 }],
+      };
+    } else {
+      hash[name].light[0].bright = bright;
+      hash[name].light[0].dim = dim;
+    }
+  }
+
   static async load(
     systemId,
     selfBright,
@@ -219,6 +237,9 @@ export default class SourceLibrary {
     // not against the common or user libraries. Likewise, ignoreEquipment turns
     // off consumable across the merged data only.
     if (mergedLibrary[systemId]) {
+      // Since we're always drawing from the raw common or user library data,
+      // the initial topology here is always the topology name and not the object.
+      // So this overwrite of the topology is safe.
       mergedLibrary[systemId].topology = getTopology(
         mergedLibrary[systemId].topology,
         mergedLibrary[systemId].quantity,
@@ -227,20 +248,19 @@ export default class SourceLibrary {
       library.ignoreEquipment = ignoreEquipment;
       return library;
     } else {
+      // This clause should be a clone of the if clause above for the systemId "default",
+      // with the fallback light source update from settings in the middle.
       mergedLibrary["default"].topology = getTopology(
         mergedLibrary["default"].topology,
         mergedLibrary["default"].quantity,
       );
-
-      let defaultLibrary = mergedLibrary["default"];
-      defaultLibrary.sources["Self"].light[0].bright = selfBright;
-      defaultLibrary.sources["Self"].light[0].dim = selfDim;
-      if (selfItem && selfItem.length > 0) {
-        defaultLibrary.sources[selfItem] = defaultLibrary.sources["Self"];
-        defaultLibrary.sources[selfItem].name = selfItem;
-        delete defaultLibrary.sources.Self;
-      }
-      const library = new SourceLibrary(defaultLibrary);
+      this.updateFallbackLightSource(
+        mergedLibrary["default"],
+        selfItem,
+        selfBright,
+        selfDim,
+      );
+      const library = new SourceLibrary(mergedLibrary["default"]);
       library.ignoreEquipment = ignoreEquipment;
       return library;
     }
