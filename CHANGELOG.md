@@ -2,8 +2,8 @@
 
 ## Middle Kingdom - v10 -> main branch
 
-### 2.20.1 - January 19, 2025 - Config changes for fallback now immediately honored
-- [BUGFIX] Fallback light source no longer requires a system reload to update
+### 2.20.1 - January 25, 2025 - Config changes for fallback now immediately honored
+- [BUGFIX] Fallback light source no longer requires a system reload to update  (#100)
 
 ### 2.20.0 - January 19, 2025 - Added hook for torch changes
 - [FEATURE] Added hooks "torch.changed" and "torch.selected" so macros can respond to torch changes.
