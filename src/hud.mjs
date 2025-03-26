@@ -48,7 +48,9 @@ export default class TokenHUD {
   ) {
     let state = token.lightSourceState;
     let disabled = token.lightSourceIsExhausted(token.currentLightSource);
-    let tbutton = $(BUTTON_HTML);
+    const localizedTooltip = `"${game.i18n.localize("torch.hud.tooltip")}"`;
+    const buttonText = BUTTON_HTML.replace('"Torch"', localizedTooltip);
+    let tbutton = $(buttonText);
     if (state === token.STATE_ON) {
       tbutton.addClass("active");
     } else if (state === token.STATE_DIM) {

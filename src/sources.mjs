@@ -60,6 +60,13 @@ export default {
         "states": 2,
         "light": [{ "bright": 0, "dim": 10, "angle": 360 }],
       },
+      "Produce Flame": {
+        "name": "Produce Flame",
+        "type": "cantrip",
+        "consumable": false,
+        "states": 2,
+        "light": [{ "bright": 20, "dim": 40, "angle": 360, "color": "#ff9329", "alpha": 1, "attenuation": 0.8 }],
+      },
     },
   },
   "swade": {

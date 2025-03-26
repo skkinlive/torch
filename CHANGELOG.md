@@ -2,6 +2,11 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.20.2 - March 26, 2025 - Foundry 13 readiness 
+- [BUGFIX] Provided translation for Torch tooltip on HUD
+- [INTERNAL] Bumped support to include all builds of Foundry 13
+- [BUGFIX] Included "Produce Flame" cantrip in DnD5e set of predefined light sources
+
 ### 2.20.1 - January 25, 2025 - Config changes for fallback now immediately honored
 - [BUGFIX] Fallback light source no longer requires a system reload to update  (#100)
 
