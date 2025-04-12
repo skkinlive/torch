@@ -2,6 +2,10 @@
 
 ## Middle Kingdom - v10 -> main branch
 
+### 2.21.0 - April 12, 2025 - Updates for Spanish and CoC7
+- [FEATURE] Updated Spanish translations - thanks, lozonje!
+- [FEATURE] CoC7 light sources - thanks again, lozonje!
+
 ### 2.20.2 - March 26, 2025 - Foundry 13 readiness 
 - [BUGFIX] Provided translation for Torch tooltip on HUD
 - [INTERNAL] Bumped support to include all builds of Foundry 13

@@ -10,6 +10,7 @@ Out of the box, the following are available:
 
 | System | Sources |
 |--------|---------|
+| CoC7 | Torch, Lamp, Lantern, Candle, Flare 
 | dnd5e | Candle, Torch, Lamp, Bullseye Lantern, Hooded Lantern, Light, Dancing Lights
 | swade | Candle, Flashlight, Lantern, Torch
 | pf1 | Candle, Lamp, Lantern, Bullseye Lantern, Hooded Lantern, Miner's Lantern, Torch
@@ -24,7 +25,6 @@ Out of the box, the following are available:
 | dragonbane | Lantern, Oil Lamp, Torch, Tallow Candle
 | demonlord  | Candle, Lantern, Spotlight Lantern, Torch 
 | wwn | Torch, Lantern, Flamesight, The Light of Faith
-| CoC7 | Torch, Candle, Lamp, Lantern, Flare
 
 This module works by changing the token's light settings, so the only properties you can control are those available to a token, not those available to a light as created in Lighting Controls. 
 
@@ -228,7 +228,7 @@ The following is the current status of translation. Some features have arrived, 
 | -------- | ---------- | ------------ |
 | de    | `[########################]` 24/24 (100%) | ToGreedy, Beff42, MKBraun |
 | en    | `[########################]` 24/24 (100%) | deuce, lupestro |
-| es    | `[################--------]` 16/24 (67%) | lozanoje, WallaceMcGregor |
+| es    | `[########################]` 24/24 (100%) | lozanoje, WallaceMcGregor |
 | fr    | `[############------------]` 12/24 (50%) | Aymeeric |
 | it    | `[################--------]` 16/24 (67%) | GregoryWarn |
 | ja    | `[################--------]` 16/24 (67%) | doumoku |

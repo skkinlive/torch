@@ -13,7 +13,7 @@ export default {
       "Luz": "Light",
       "Luces Danzantes": "Dancing Lights",
       "Crear llama, flamear": "Produce Flame",
-      "Candil": "Lamp"
+      "Candil": "Lamp",
     },
     "sources": {
       "Candle": {
@@ -909,73 +909,78 @@ export default {
       "Bengala (de un solo uso)": "Flare",
       "Pistola de bengalas": "Flare",
       "Vela": "Candle",
-      "Velas de 15 horas": "Candle"
+      "Velas de 15 horas": "Candle",
     },
     "sources": {
       "Torch": {
-      "type": "equipment",
-      "consumable": true,
-      "states": 2,
-      "light": [{
-          "bright": 20,
-          "dim": 40,
-          "angle": 360
-          }
-      ]
+        "type": "equipment",
+        "consumable": true,
+        "states": 2,
+        "light": [
+          {
+            "bright": 20,
+            "dim": 40,
+            "angle": 360,
+          },
+        ],
       },
       "Lamp": {
-      "type": "equipment",
-      "consumable": false,
-      "states": 2,
-      "light": [{
-          "bright": 15,
-          "dim": 45,
-          "angle": 360
-          }
-      ]
+        "type": "equipment",
+        "consumable": false,
+        "states": 2,
+        "light": [
+          {
+            "bright": 15,
+            "dim": 45,
+            "angle": 360,
+          },
+        ],
       },
       "Lantern": {
-      "type": "equipment",
-      "consumable": false,
-      "states": 2,
-      "light": [{
-          "bright": 60,
-          "dim": 120,
-          "angle": 57
-          }
-      ]
+        "type": "equipment",
+        "consumable": false,
+        "states": 2,
+        "light": [
+          {
+            "bright": 60,
+            "dim": 120,
+            "angle": 57,
+          },
+        ],
       },
       "Candle": {
-      "type": "equipment",
-      "consumable": true,
-      "states": 2,
-      "light": [{
-          "bright": 5,
-          "dim": 10,
-          "angle": 360
-          }
-      ]
+        "type": "equipment",
+        "consumable": true,
+        "states": 2,
+        "light": [
+          {
+            "bright": 5,
+            "dim": 10,
+            "angle": 360,
+          },
+        ],
       },
       "Flare": {
-      "type": "equipment",
-      "consumable": false,
-      "states": 2,
-      "light": [{
-          "bright": 100,
-          "dim": 200,
-          "angle": 360,
-          "color": "#ff9329",
-          "alpha": 0.5,
-          "animation": {
-            "type": "sunburst",
-            "speed": 5,
-            "intensity": 5,
-            "reverse": false
-          }
-          }
-      ]
-      }
-    }
+        "type": "equipment",
+        "consumable": false,
+        "states": 2,
+        "light": [
+          {
+            "bright": 100,
+            "dim": 200,
+            "angle": 360,
+            "color": "#ff9329",
+            "alpha": 0.5,
+            "animation": {
+              "type": "sunburst",
+              "speed": 5,
+              "intensity": 5,
+              "reverse": false,
+            },
+          },
+        ],
+      },
+    },
   },
   "default": {
     "system": "default",
