@@ -3,7 +3,7 @@ export default {
     "system": "dnd5e",
     "topology": "standard",
     "quantity": "quantity",
-    "aliases": {
+    "aliases": { // 이 부분은 기존 내용 유지
       "Lantern, Hooded": "Hooded Lantern",
       "Lantern, Bullseye": "Bullseye Lantern",
       "Antorcha": "Torch",
@@ -22,6 +22,9 @@ export default {
         "consumable": true,
         "states": 2,
         "light": [{ "bright": 5, "dim": 10, "angle": 360 }],
+        "aliases": {
+          "candle": "양초 Candle"
+        }
       },
       "Torch": {
         "name": "Torch",
@@ -29,6 +32,9 @@ export default {
         "consumable": true,
         "states": 2,
         "light": [{ "bright": 20, "dim": 40, "angle": 360 }],
+        "aliases": {
+          "torch": "횃불 Torch"
+        }
       },
       "Lamp": {
         "name": "Lamp",
@@ -36,6 +42,9 @@ export default {
         "consumable": false,
         "states": 2,
         "light": [{ "bright": 15, "dim": 45, "angle": 360 }],
+        "aliases": {
+          "lamp": "램프 Lamp"
+        }
       },
       "Bullseye Lantern": {
         "name": "Bullseye Lantern",
@@ -43,6 +52,9 @@ export default {
         "consumable": false,
         "states": 2,
         "light": [{ "bright": 60, "dim": 120, "angle": 57 }],
+        "aliases": {
+          "bullseye lantern": "불스아이 랜턴 Bullseye Lantern"
+        }
       },
       "Hooded Lantern": {
         "name": "Hooded Lantern",
@@ -53,6 +65,9 @@ export default {
           { "bright": 30, "dim": 60, "angle": 360 },
           { "bright": 0, "dim": 5, "angle": 360 },
         ],
+        "aliases": {
+          "hooded lantern": "덮개 랜턴 Hooded Lantern"
+        }
       },
       "Light": {
         "name": "Light",
@@ -60,6 +75,9 @@ export default {
         "consumable": false,
         "states": 2,
         "light": [{ "bright": 20, "dim": 40, "angle": 360 }],
+        "aliases": {
+          "light": "빛 Light"
+        }
       },
       "Dancing Lights": {
         "name": "Dancing Lights",
@@ -67,6 +85,9 @@ export default {
         "consumable": false,
         "states": 2,
         "light": [{ "bright": 0, "dim": 10, "angle": 360 }],
+        "aliases": {
+          "dancing lights": "춤추는 빛 Dancing Lights"
+        }
       },
       "Produce Flame": {
         "name": "Produce Flame",
@@ -74,6 +95,9 @@ export default {
         "consumable": false,
         "states": 2,
         "light": [{ "bright": 20, "dim": 40, "angle": 360, "color": "#ff9329", "alpha": 1, "attenuation": 0.8 }],
+        "aliases": {
+          "produce flame": "화염 생성 Produce Flame"
+        }
       },
     },
   },
