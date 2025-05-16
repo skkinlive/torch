@@ -67,6 +67,12 @@
       "name": "正體中文",
       "path": "lang/zh-TW.json",
       "flags": {}
+    },
+    {
+      "lang": "ko",
+      "name": "Korean",
+      "path": "lang/ko.json",
+      "flags": {}
     }
   ],
   "esmodules": [
