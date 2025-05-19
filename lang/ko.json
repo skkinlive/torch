@@ -1,6 +1,6 @@
 {
 	"I18N.LANGUAGE": "한국어",
-	"I18N.MAINTAINERS": ["Lupestro"],
+	"I18N.MAINTAINERS": ["skkinlive"],
 
 	"torch.settings.gameLightSources.name": "추가 광원",
 	"torch.settings.gameLightSources.hint": "기본으로 제공되는 광원 외에 사용할 추가 광원을 포함하는 JSON 파일입니다.",
