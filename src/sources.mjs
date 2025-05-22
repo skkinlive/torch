@@ -14,6 +14,14 @@ export default {
       "Luces Danzantes": "Dancing Lights",
       "Crear llama, flamear": "Produce Flame",
       "Candil": "Lamp",
+      "양초 Candle":  "Candle",
+      "횃불 Torch": "Torch",
+      "램프 Lamp": "Lamp",
+      "불스아이 랜턴 Bullseye Lantern": "Bullseye Lantern",
+      "덮개 랜턴 Hooded Lantern": "Hooded Lantern",
+      "빛 Light": "Light",
+      "춤추는 빛 Dancing Lights": "Dancing Lights",
+      "화염 생성 Produce Flame": "Produce Flame",
     },
     "sources": {
       "Candle": {
